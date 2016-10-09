@@ -22,4 +22,6 @@
         app:headerLayout="@layout/nav_header_god_drawer"
         app:menu="@menu/activity_god_drawer_drawer" />
 
+
+
 </android.support.v4.widget.DrawerLayout>
