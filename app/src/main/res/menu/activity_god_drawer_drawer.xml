@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_agni"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Agni" />
+        <item
+            android:id="@+id/nav_ah_muzen_cab"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Ah Muzen Cab" />
+        <item
+            android:id="@+id/nav_ah_puch"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Ah Puch" />
+        <item
+            android:id="@+id/nav_amaterasu"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Amaterasu" />
+        <item
+            android:id="@+id/nav_anhur"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Anhur" />
+        <item
+            android:id="@+id/nav_anubis"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Anubis" />
+        <item
+            android:id="@+id/nav_ao_kuang"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ao Kuang" />
+        <item
+            android:id="@+id/nav_aphrodite"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Aphrodite" />
+        <item
+            android:id="@+id/nav_apollo"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Apollo" />
+        <item
+            android:id="@+id/nav_arachne"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Arachne" />
+        <item
+            android:id="@+id/nav_ares"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ares" />
+        <item
+            android:id="@+id/nav_artemis"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Artemis" />
+        <item
+            android:id="@+id/nav_athena"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Athena" />
+        <item
+            android:id="@+id/nav_awilix"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Awilix" />
+        <item
+            android:id="@+id/nav_bacchus"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Bacchus" />
+        <item
+            android:id="@+id/nav_bakasura"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Bakasura" />
+        <item
+            android:id="@+id/nav_bastet"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Bastet" />
+        <item
+            android:id="@+id/nav_bellona"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Bellona" />
+        <item
+            android:id="@+id/nav_cabrakan"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Cabrakan" />
+        <item
+            android:id="@+id/nav_camazotz"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Camazotz" />
+        <item
+            android:id="@+id/nav_chaac"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Chaac" />
+        <item
+            android:id="@+id/nav_change"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Chang'e" />
+        <item
+            android:id="@+id/nav_chiron"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Chiron" />
+        <item
+            android:id="@+id/nav_chronos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Chronos" />
+        <item
+            android:id="@+id/nav_cupid"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Cupid" />
+        <item
+            android:id="@+id/nav_erlang_shen"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Erlang Shen" />
+        <item
+            android:id="@+id/nav_fafnir"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Fafnir" />
+        <item
+            android:id="@+id/nav_fenrir"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Fenrir" />
+        <item
+            android:id="@+id/nav_freya"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Freya" />
+        <item
+            android:id="@+id/nav_geb"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Geb" />
+        <item
+            android:id="@+id/nav_guan_yu"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Guan Yu" />
+        <item
+            android:id="@+id/nav_hades"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Hades" />
+        <item
+            android:id="@+id/nav_he_bo"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="He Bo" />
+        <item
+            android:id="@+id/nav_hel"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Hel" />
+        <item
+            android:id="@+id/nav_hercules"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Hercules" />
+        <item
+            android:id="@+id/nav_hou_yi"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Hou Yi" />
+        <item
+            android:id="@+id/nav_hun_batz"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Hun Batz" />
+        <item
+            android:id="@+id/nav_isis"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Isis" />
+        <item
+            android:id="@+id/nav_izanami"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Izanami" />
+        <item
+            android:id="@+id/nav_janus"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Janus" />
+        <item
+            android:id="@+id/nav_jing_wei"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Jing Wei" />
+        <item
+            android:id="@+id/nav_kali"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Kali" />
+        <item
+            android:id="@+id/nav_khepri"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Khepri" />
+        <item
+            android:id="@+id/nav_kukulkan"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Kukulkan" />
+        <item
+            android:id="@+id/nav_kumbhakarna"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Kumbhakarna" />
+        <item
+            android:id="@+id/nav_loki"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Loki" />
+        <item
+            android:id="@+id/nav_medusa"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Medusa" />
+        <item
+            android:id="@+id/nav_mercury"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Mercury" />
+        <item
+            android:id="@+id/nav_ne_zha"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ne Zha" />
+        <item
+            android:id="@+id/nav_neith"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Neith" />
+        <item
+            android:id="@+id/nav_nemesis"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Nemesis" />
+        <item
+            android:id="@+id/nav_nox"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Nox" />
+        <item
+            android:id="@+id/nav_nu_wa"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Nu Wa" />
+        <item
+            android:id="@+id/nav_odin"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Odin" />
+        <item
+            android:id="@+id/nav_osiris"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Osiris" />
+        <item
+            android:id="@+id/nav_poseidon"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Poseidon" />
+        <item
+            android:id="@+id/nav_ra"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ra" />
+        <item
+            android:id="@+id/nav_raijin"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Raijin" />
+        <item
+            android:id="@+id/nav_rama"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Rama" />
+        <item
+            android:id="@+id/nav_ratatoskr"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ratatoskr" />
+        <item
+            android:id="@+id/nav_ravana"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ravana" />
+        <item
+            android:id="@+id/nav_scylla"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Scylla" />
+        <item
+            android:id="@+id/nav_serqet"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Serqet" />
+        <item
+            android:id="@+id/nav_skadi"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Skadi" />
+        <item
+            android:id="@+id/nav_sobek"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Sobek" />
+        <item
+            android:id="@+id/nav_sol"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Sol" />
+        <item
+            android:id="@+id/nav_sun_wukong"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Sun Wukong" />
+        <item
+            android:id="@+id/nav_susano"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Susano" />
+        <item
+            android:id="@+id/nav_sylvanus"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Sylvanus" />
+        <item
+            android:id="@+id/nav_terra"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Terra" />
+        <item
+            android:id="@+id/nav_thanatos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Thanatos" />
+        <item
+            android:id="@+id/nav_thor"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Thor" />
+        <item
+            android:id="@+id/nav_tyr"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Tyr" />
+        <item
+            android:id="@+id/nav_ullr"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ullr" />
+        <item
+            android:id="@+id/nav_vamana"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Vamana" />
+        <item
+            android:id="@+id/nav_vulcan"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Vulcan" />
+        <item
+            android:id="@+id/nav_xbalanque"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Xbalanque" />
+        <item
+            android:id="@+id/nav_xing_tian"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Xing Tian" />
+        <item
+            android:id="@+id/nav_ymir"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ymir" />
+        <item
+            android:id="@+id/nav_zeus"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Zeus" />
+        <item
+            android:id="@+id/nav_zhong_kui"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Zhong Kui" />
+    </group>
+
+</menu>
