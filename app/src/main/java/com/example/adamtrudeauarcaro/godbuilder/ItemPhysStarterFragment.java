@@ -1,16 +1,20 @@
 package com.example.adamtrudeauarcaro.godbuilder;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+
+import java.util.ArrayList;
 
 
 public class ItemPhysStarterFragment extends DialogFragment {
@@ -18,43 +22,55 @@ public class ItemPhysStarterFragment extends DialogFragment {
     Button btn;
     ListView lv;
     SearchView sv;
-    ArrayAdapter<String> adapter;
-    String[] items={"Bumba's Mask", "Rangda's Mask", "Bluestone Pendant", "Death's Toll",
+    String[] names={"No starter", "Bumba's Mask", "Rangda's Mask", "Bluestone Pendant", "Death's Toll",
                     "Mark of the Vanguard", "Swift Wing", "War Flag", "Watcher's Gift"};
+    int[] images={R.drawable.no_starter, R.drawable.bumbas_mask, R.drawable.rangdas_mask, R.drawable.bluestone_pendant, R.drawable.deaths_toll,
+                    R.drawable.mark_of_the_vanguard, R.drawable.swift_wing, R.drawable.war_flag, R.drawable.watchers_gift};
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        //Indicate layout for dialog
         View myView=inflater.inflate(R.layout.item_list, null);
-        //SET TITLE DIALOG TITLE
+
+        //Set dialog title
         getDialog().setTitle("Starter Items");
-        //BUTTON,LISTVIEW,SEARCHVIEW INITIALIZATIONS
-        lv=(ListView) myView.findViewById(R.id.listView1);
-        sv=(SearchView) myView.findViewById(R.id.searchView1);
-        btn=(Button) myView.findViewById(R.id.dismiss);
-        //CREATE AND SET ADAPTER TO LISTVIEW
-        adapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,items);
+
+        //Defining searchview, listview, button
+        SearchView sv=(SearchView) myView.findViewById(R.id.searchView1);
+        ListView lv=(ListView) myView.findViewById(R.id.listView1);
+        Button btn=(Button) myView.findViewById(R.id.dismiss);
+
+        //Initialize and set adapter for items
+        final Adapter adapter = new Adapter(getActivity(), this.getItems());
         lv.setAdapter(adapter);
-        //SEARCH
-        sv.setQueryHint("Search..");
+
+        //Searchview functionality
+        //**BUG** Upon searching for an item and selecting it, aegis is returned because index becomes 1
+        sv.setQueryHint("Search starter items..");
         sv.setOnQueryTextListener(new OnQueryTextListener() {
-            @Override
             public boolean onQueryTextSubmit(String txt) {
-                // TODO Auto-generated method stub
                 return false;
             }
-            @Override
             public boolean onQueryTextChange(String txt) {
-                // TODO Auto-generated method stub
                 adapter.getFilter().filter(txt);
                 return false;
             }
         });
-        //BUTTON
+
+        //Listener for itemclick on list
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3)
+            {
+                int image_id = images[position];
+                mListener.onListItemClick(image_id);
+                dismiss();
+            }
+        });
+
+        //Cancel button
         btn.setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
                 dismiss();
             }
         });
@@ -62,9 +78,36 @@ public class ItemPhysStarterFragment extends DialogFragment {
         return myView;
     }
 
-    public static ItemPhysStarterFragment newInstance(){
+    //Fragment contstructor
+    public static ItemPhysStarterFragment newInstance()
+    {
         ItemPhysStarterFragment f = new ItemPhysStarterFragment();
         return f;
+    }
+
+    //Populates list with items
+    private ArrayList<Item> getItems()
+    {
+        ArrayList<Item> items = new ArrayList<Item>();
+        Item item;
+
+        for(int i = 0; i < names.length; i++) {
+            item = new Item(names[i], images[i]);
+            items.add(item);
+        }
+
+        return items;
+    }
+
+    //Setting listener to connect list to God fragment
+    public interface OnListItemClickedListener {
+        void onListItemClick(int resourceId);
+    }
+
+    OnListItemClickedListener mListener;
+
+    public void setOnListItemSelectedListener(OnListItemClickedListener listener) {
+        this.mListener = listener;
     }
 
 }

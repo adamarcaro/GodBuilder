@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by adama on 2017-02-11.
  */
 
-//Adapter for populating grid view
+//Adapter for populating list view
 
 public class Adapter extends BaseAdapter implements Filterable {
 
