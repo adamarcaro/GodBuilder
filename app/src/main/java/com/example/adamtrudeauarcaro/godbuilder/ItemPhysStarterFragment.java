@@ -45,7 +45,6 @@ public class ItemPhysStarterFragment extends DialogFragment {
         lv.setAdapter(adapter);
 
         //Searchview functionality
-        //**BUG** Upon searching for an item and selecting it, aegis is returned because index becomes 1
         sv.setQueryHint("Search starter items..");
         sv.setOnQueryTextListener(new OnQueryTextListener() {
             public boolean onQueryTextSubmit(String txt) {
@@ -62,8 +61,9 @@ public class ItemPhysStarterFragment extends DialogFragment {
         {
             public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3)
             {
-                int image_id = images[position];
-                mListener.onListItemClick(image_id);
+                String name = adapter.getItem(position).getName();
+                int image_id = adapter.getItem(position).getImage();
+                mListener.onListItemClick(name, image_id);
                 dismiss();
             }
         });
@@ -101,7 +101,7 @@ public class ItemPhysStarterFragment extends DialogFragment {
 
     //Setting listener to connect list to God fragment
     public interface OnListItemClickedListener {
-        void onListItemClick(int resourceId);
+        void onListItemClick(String name, int resourceId);
     }
 
     OnListItemClickedListener mListener;

@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="25"
+        android:layout_weight="18"
         android:orientation="horizontal"
         android:weightSum="100">
 
@@ -17,16 +17,15 @@
             android:id="@+id/godImage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="40"
-            android:padding="5dp"
+            android:layout_weight="33"
+            android:padding="4dp"
             app:srcCompat="@drawable/agni" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="60"
+            android:layout_weight="67"
             android:orientation="vertical"
             android:paddingLeft="10dp">
 
@@ -36,9 +35,9 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_hindu"
                 android:gravity="center_vertical"
-                android:text="Agni"
+                android:text="@string/agni"
                 android:textColor="?android:attr/editTextColor"
-                android:textSize="24sp" />
+                android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/godTitle"
@@ -46,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
-                android:text="God of Fire"
+                android:text="@string/agni_title"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
@@ -54,9 +53,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7.5"
+        android:layout_weight="5"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
         android:weightSum="100">
 
         <TextView
@@ -66,7 +64,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="33"
             android:gravity="center_horizontal"
-            android:text="Starter"
+            android:text="@string/starter"
             android:textSize="20sp" />
 
         <TextView
@@ -76,7 +74,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="67"
             android:gravity="center_horizontal"
-            android:text="Relics"
+            android:text="@string/relics"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -84,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="20">
+        android:layout_weight="18">
 
         <ImageButton
             android:id="@+id/imageStarterItem"
@@ -123,18 +121,67 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7.5"
+        android:layout_weight="6"
         android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/nameStarter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameRelic1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameRelic2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textFullBuild"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Full build"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/full_build"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -142,7 +189,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="20">
+        android:layout_weight="18">
 
         <ImageButton
             android:id="@+id/imageItem1"
@@ -181,8 +228,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="6"
         android:orientation="horizontal"
-        android:layout_weight="20">
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/nameItem1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameItem2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameItem3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="18">
 
         <ImageButton
             android:id="@+id/imageItem4"
@@ -216,6 +313,56 @@
             android:padding="7dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/no_item" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/nameItem4"
+            android:layout_width="30px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameItem5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/nameItem6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:singleLine="false"
+            android:textColor="@color/almost_black"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

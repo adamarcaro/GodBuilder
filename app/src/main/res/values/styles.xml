@@ -2,9 +2,27 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Japanesetheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/japanese</item>
+        <item name="colorPrimaryDark">@color/japaneseDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Hindutheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/hindu</item>
+        <item name="colorPrimaryDark">@color/hinduDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MayanTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/mayan</item>
+        <item name="colorPrimaryDark">@color/mayanDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

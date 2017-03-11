@@ -35,7 +35,7 @@ public class Adapter extends BaseAdapter implements Filterable {
         return items.size();
     }
 
-    public Object getItem(int position) {
+    public Item getItem(int position) {
         return items.get(position);
     }
 
