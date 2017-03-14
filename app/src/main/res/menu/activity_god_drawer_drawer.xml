@@ -184,6 +184,10 @@
             android:icon="@drawable/icon_hindu"
             android:title="Kumbhakarna" />
         <item
+            android:id="@+id/nav_kuzenbo"
+            android:icon="@drawable/icon_japanese"
+            android:title="Kuzenbo" />
+        <item
             android:id="@+id/nav_loki"
             android:icon="@drawable/icon_norse"
             android:title="Loki" />
@@ -207,6 +211,10 @@
             android:id="@+id/nav_nemesis"
             android:icon="@drawable/icon_greek"
             android:title="Nemesis" />
+        <item
+            android:id="@+id/nav_nike"
+            android:icon="@drawable/icon_greek"
+            android:title="Nike" />
         <item
             android:id="@+id/nav_nox"
             android:icon="@drawable/icon_roman"
@@ -288,9 +296,17 @@
             android:icon="@drawable/icon_greek"
             android:title="Thanatos" />
         <item
+            android:id="@+id/nav_the_morrigan"
+            android:icon="@drawable/icon_celtic"
+            android:title="The Morrigan" />
+        <item
             android:id="@+id/nav_thor"
             android:icon="@drawable/icon_norse"
             android:title="Thor" />
+        <item
+            android:id="@+id/nav_thoth"
+            android:icon="@drawable/icon_egyptian"
+            android:title="Thoth" />
         <item
             android:id="@+id/nav_tyr"
             android:icon="@drawable/icon_norse"

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00205a</color>
+    <color name="colorPrimary">#1762A1</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="almost_black">#222222</color>
+    <color name="black">#000000</color>
+    <color name="orange">#FA0</color>
+    <color name="white">#FFF</color>
+    <color name="holoBlue">#00ddff</color>
+
+    <color name="godName">#FFF</color>
+    <color name="godTitle">#DDD</color>
+
+    <color name="calmblue">#1762A1</color>
 
     <color name="japanese">#9d1717</color>
     <color name="japaneseDark">#620e0e</color>
