@@ -8,6 +8,7 @@
     <color name="orange">#FA0</color>
     <color name="white">#FFF</color>
     <color name="holoBlue">#00ddff</color>
+    <color name="material_blue_grey_800">#223</color> //header colour
 
     <color name="godName">#FFF</color>
     <color name="godTitle">#DDD</color>

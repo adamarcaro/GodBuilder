@@ -3,6 +3,7 @@ package com.adamtrudeauarcaro.godbuilder;
 /**
  * Created by adama on 2017-03-13.
  */
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -23,27 +24,28 @@ public class TabFragmentAgni extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Inflate tab_layout_agni and setup Views.
-        View x =  inflater.inflate(R.layout.tab_layout_agni,null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View myView =  inflater.inflate(R.layout.tab_layout,null);
+        tabLayout = (TabLayout) myView.findViewById(R.id.tabs);
+        viewPager = (ViewPager) myView.findViewById(R.id.viewpager);
+
+        ImageView godImage = (ImageView) myView.findViewById(R.id.godImage);
+        TextView godName = (TextView) myView.findViewById(R.id.godName);
+        TextView godTitle = (TextView) myView.findViewById(R.id.godTitle);
+
+        godImage.setImageResource(R.drawable.agni);
+        godName.setText(R.string.agni);
+        godName.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.icon_hindu,0);
+        godTitle.setText(R.string.agni_title);
 
         //Set an Adapter for the View Pager
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
-
-        /**
-         * Now , this is a workaround ,
-         * The setupWithViewPager dose't works without the runnable .
-         * Maybe a Support Library Bug .
-         */
-
         tabLayout.post(new Runnable() {
-            @Override
             public void run() {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
 
-        return x;
+        return myView;
 
     }
 
@@ -54,32 +56,22 @@ public class TabFragmentAgni extends Fragment {
         }
 
         //Return fragment with respect to Position .
-
-        @Override
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return new FragmentAgni();
+                case 0 : return new FragmentAgni1();
                 case 1 : return new FragmentAgni2();
                 case 2 : return new FragmentAgni3();
             }
             return null;
         }
 
-        @Override
         public int getCount() {
-
             return int_items;
-
         }
 
-        /**
-         * This method returns the title of the tab according to the position.
-         */
-
-        @Override
+        //This method returns the title of the tab according to the position.
         public CharSequence getPageTitle(int position) {
-
             switch (position){
                 case 0 : return "Build 1";
                 case 1 : return "Build 2";
@@ -87,7 +79,5 @@ public class TabFragmentAgni extends Fragment {
             }
             return null;
         }
-
     }
-
 }

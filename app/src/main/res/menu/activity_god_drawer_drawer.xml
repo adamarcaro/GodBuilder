@@ -84,6 +84,10 @@
             android:icon="@drawable/icon_mayan"
             android:title="Camazotz" />
         <item
+            android:id="@+id/nav_cernunnos"
+            android:icon="@drawable/icon_celtic"
+            android:title="Cernunnos" />
+        <item
             android:id="@+id/nav_chaac"
             android:icon="@drawable/icon_mayan"
             android:title="Chaac" />

@@ -12,6 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class TabFragmentAhMuzenCab extends Fragment {
 
@@ -21,27 +23,28 @@ public class TabFragmentAhMuzenCab extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Inflate tab_layout_agni and setup Views.
-        View x =  inflater.inflate(R.layout.tab_layout_ah_muzen_cab,null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View myView =  inflater.inflate(R.layout.tab_layout,null);
+        tabLayout = (TabLayout) myView.findViewById(R.id.tabs);
+        viewPager = (ViewPager) myView.findViewById(R.id.viewpager);
+
+        ImageView godImage = (ImageView) myView.findViewById(R.id.godImage);
+        TextView godName = (TextView) myView.findViewById(R.id.godName);
+        TextView godTitle = (TextView) myView.findViewById(R.id.godTitle);
+
+        godImage.setImageResource(R.drawable.ah_muzen_cab);
+        godName.setText(R.string.ah_muzen_cab);
+        godName.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.icon_mayan,0);
+        godTitle.setText(R.string.ah_muzen_cab_title);
 
         //Set an Adapter for the View Pager
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
-
-        /**
-         * Now , this is a workaround ,
-         * The setupWithViewPager dose't works without the runnable .
-         * Maybe a Support Library Bug .
-         */
-
         tabLayout.post(new Runnable() {
-            @Override
             public void run() {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
 
-        return x;
+        return myView;
 
     }
 
@@ -52,32 +55,22 @@ public class TabFragmentAhMuzenCab extends Fragment {
         }
 
         //Return fragment with respect to Position .
-
-        @Override
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return new FragmentAhMuzenCab();
+                case 0 : return new FragmentAhMuzenCab1();
                 case 1 : return new FragmentAhMuzenCab2();
                 case 2 : return new FragmentAhMuzenCab3();
             }
             return null;
         }
 
-        @Override
         public int getCount() {
-
             return int_items;
-
         }
 
-        /**
-         * This method returns the title of the tab according to the position.
-         */
-
-        @Override
+        //This method returns the title of the tab according to the position.
         public CharSequence getPageTitle(int position) {
-
             switch (position){
                 case 0 : return "Build 1";
                 case 1 : return "Build 2";
@@ -86,5 +79,4 @@ public class TabFragmentAhMuzenCab extends Fragment {
             return null;
         }
     }
-
 }

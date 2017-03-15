@@ -1,25 +1,5 @@
 package com.adamtrudeauarcaro.godbuilder;
 
-/*
-import android.app.ActionBar;
-import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-*/
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -32,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
-public class GodDrawer extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
+public class GodDrawer extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -42,184 +22,6 @@ public class GodDrawer extends AppCompatActivity /*implements NavigationView.OnN
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        android.app.FragmentManager fragmentManager = getFragmentManager();
-
-        if (id == R.id.nav_agni) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAgni()).commit();
-        } else if (id == R.id.nav_ah_muzen_cab) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAhMuzenCab()).commit();
-        } else if (id == R.id.nav_ah_puch) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAhPuch()).commit();
-        } else if (id == R.id.nav_amaterasu) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAmaterasu()).commit();
-        } else if (id == R.id.nav_anhur) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAnhur()).commit();
-        } else if (id == R.id.nav_anubis) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAnubis()).commit();
-        } else if (id == R.id.nav_ao_kuang) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAoKuang()).commit();
-        } else if (id == R.id.nav_aphrodite) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAphrodite()).commit();
-        } else if (id == R.id.nav_apollo) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentApollo()).commit();
-        } else if (id == R.id.nav_arachne) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentArachne()).commit();
-        } else if (id == R.id.nav_ares) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAres()).commit();
-        } else if (id == R.id.nav_artemis) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentArtemis()).commit();
-        } else if (id == R.id.nav_athena) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAthena()).commit();
-        } else if (id == R.id.nav_awilix) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentAwilix()).commit();
-        } else if (id == R.id.nav_bacchus) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentBacchus()).commit();
-        } else if (id == R.id.nav_bakasura) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentBakasura()).commit();
-        } else if (id == R.id.nav_bastet) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentBastet()).commit();
-        } else if (id == R.id.nav_bellona) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentBellona()).commit();
-        } else if (id == R.id.nav_cabrakan) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentCabrakan()).commit();
-        } else if (id == R.id.nav_camazotz) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentCamazotz()).commit();
-        } else if (id == R.id.nav_chaac) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentChaac()).commit();
-        } else if (id == R.id.nav_change) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentChange()).commit();
-        } else if (id == R.id.nav_chiron) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentChiron()).commit();
-        } else if (id == R.id.nav_chronos) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentChronos()).commit();
-        } else if (id == R.id.nav_cupid) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentCupid()).commit();
-        } else if (id == R.id.nav_erlang_shen) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentErlangShen()).commit();
-        } else if (id == R.id.nav_fafnir) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentFafnir()).commit();
-        } else if (id == R.id.nav_fenrir) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentFenrir()).commit();
-        } else if (id == R.id.nav_freya) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentFreya()).commit();
-        } else if (id == R.id.nav_geb) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentGeb()).commit();
-        } else if (id == R.id.nav_guan_yu) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentGuanYu()).commit();
-        } else if (id == R.id.nav_hades) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHades()).commit();
-        } else if (id == R.id.nav_he_bo) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHeBo()).commit();
-        } else if (id == R.id.nav_hel) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHel()).commit();
-        } else if (id == R.id.nav_hercules) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHercules()).commit();
-        } else if (id == R.id.nav_hou_yi) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHouYi()).commit();
-        } else if (id == R.id.nav_hun_batz) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentHunBatz()).commit();
-        } else if (id == R.id.nav_isis) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentIsis()).commit();
-        } else if (id == R.id.nav_izanami) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentIzanami()).commit();
-        } else if (id == R.id.nav_janus) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentJanus()).commit();
-        } else if (id == R.id.nav_jing_wei) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentJingWei()).commit();
-        } else if (id == R.id.nav_kali) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentKali()).commit();
-        } else if (id == R.id.nav_khepri) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentKhepri()).commit();
-        } else if (id == R.id.nav_kukulkan) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentKukulkan()).commit();
-        } else if (id == R.id.nav_kumbhakarna) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentKumbhakarna()).commit();
-        } else if (id == R.id.nav_kuzenbo) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentKuzenbo()).commit();
-        } else if (id == R.id.nav_loki) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentLoki()).commit();
-        } else if (id == R.id.nav_medusa) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentMedusa()).commit();
-        } else if (id == R.id.nav_mercury) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentMercury()).commit();
-        } else if (id == R.id.nav_ne_zha) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNeZha()).commit();
-        } else if (id == R.id.nav_neith) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNeith()).commit();
-        } else if (id == R.id.nav_nemesis) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNemesis()).commit();
-        } else if (id == R.id.nav_nike) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNike()).commit();
-        } else if (id == R.id.nav_nox) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNox()).commit();
-        } else if (id == R.id.nav_nu_wa) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentNuWa()).commit();
-        } else if (id == R.id.nav_odin) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentOdin()).commit();
-        } else if (id == R.id.nav_osiris) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentOsiris()).commit();
-        } else if (id == R.id.nav_poseidon) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentPoseidon()).commit();
-        } else if (id == R.id.nav_ra) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentRa()).commit();
-        } else if (id == R.id.nav_raijin) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentRaijin()).commit();
-        } else if (id == R.id.nav_rama) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentRama()).commit();
-        } else if (id == R.id.nav_ratatoskr) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentRatatoskr()).commit();
-        } else if (id == R.id.nav_ravana) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentRavana()).commit();
-        } else if (id == R.id.nav_scylla) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentScylla()).commit();
-        } else if (id == R.id.nav_serqet) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSerqet()).commit();
-        } else if (id == R.id.nav_skadi) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSkadi()).commit();
-        } else if (id == R.id.nav_sobek) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSobek()).commit();
-        } else if (id == R.id.nav_sol) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSol()).commit();
-        } else if (id == R.id.nav_sun_wukong) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSunWukong()).commit();
-        } else if (id == R.id.nav_susano) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSusano()).commit();
-        } else if (id == R.id.nav_sylvanus) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentSylvanus()).commit();
-        } else if (id == R.id.nav_terra) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentTerra()).commit();
-        } else if (id == R.id.nav_thanatos) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentThanatos()).commit();
-        } else if (id == R.id.nav_the_morrigan) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentTheMorrigan()).commit();
-        } else if (id == R.id.nav_thor) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentThor()).commit();
-        } else if (id == R.id.nav_thoth) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentThoth()).commit();
-        } else if (id == R.id.nav_tyr) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentTyr()).commit();
-        } else if (id == R.id.nav_ullr) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentUllr()).commit();
-        } else if (id == R.id.nav_vamana) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentVamana()).commit();
-        } else if (id == R.id.nav_vulcan) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentVulcan()).commit();
-        } else if (id == R.id.nav_xbalanque) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentXbalanque()).commit();
-        } else if (id == R.id.nav_xing_tian) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentXingTian()).commit();
-        } else if (id == R.id.nav_ymir) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentYmir()).commit();
-        } else if (id == R.id.nav_zeus) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentZeus()).commit();
-        } else if (id == R.id.nav_zhong_kui) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FragmentZhongKui()).commit();
-        }
-        */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_god_drawer);
 
@@ -252,42 +54,96 @@ public class GodDrawer extends AppCompatActivity /*implements NavigationView.OnN
                 switch(id) {
                     case R.id.nav_agni: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
                     case R.id.nav_ah_muzen_cab: fragmentTransaction.replace(R.id.containerView,new TabFragmentAhMuzenCab()).commit(); break;
-                    case R.id.nav_ah_puch: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_amaterasu: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_anhur: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_anubis: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_ao_kuang: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_aphrodite: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_apollo: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_arachne: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_ares: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_artemis: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_athena: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_awilix: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_bacchus: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_bakasura: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_bastet: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_bellona: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_cabrakan: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_camazotz: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_chaac: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_change: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_chiron: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_chronos: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_cupid: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_erlang_shen: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_fafnir: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_fenrir: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_freya: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_geb: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
-                    case R.id.nav_guan_yu: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
+                    case R.id.nav_ah_puch: fragmentTransaction.replace(R.id.containerView,new TabFragmentAhPuch()).commit(); break;
+                    case R.id.nav_amaterasu: fragmentTransaction.replace(R.id.containerView,new TabFragmentAmaterasu()).commit(); break;
+                    case R.id.nav_anhur: fragmentTransaction.replace(R.id.containerView,new TabFragmentAnhur()).commit(); break;
+                    case R.id.nav_anubis: fragmentTransaction.replace(R.id.containerView,new TabFragmentAnubis()).commit(); break;
+                    case R.id.nav_ao_kuang: fragmentTransaction.replace(R.id.containerView,new TabFragmentAoKuang()).commit(); break;
+                    case R.id.nav_aphrodite: fragmentTransaction.replace(R.id.containerView,new TabFragmentAphrodite()).commit(); break;
+                    case R.id.nav_apollo: fragmentTransaction.replace(R.id.containerView,new TabFragmentApollo()).commit(); break;
+                    case R.id.nav_arachne: fragmentTransaction.replace(R.id.containerView,new TabFragmentArachne()).commit(); break;
+                    case R.id.nav_ares: fragmentTransaction.replace(R.id.containerView,new TabFragmentAres()).commit(); break;
+                    case R.id.nav_artemis: fragmentTransaction.replace(R.id.containerView,new TabFragmentArtemis()).commit(); break;
+                    case R.id.nav_athena: fragmentTransaction.replace(R.id.containerView,new TabFragmentAthena()).commit(); break;
+                    case R.id.nav_awilix: fragmentTransaction.replace(R.id.containerView,new TabFragmentAwilix()).commit(); break;
+                    case R.id.nav_bacchus: fragmentTransaction.replace(R.id.containerView,new TabFragmentBacchus()).commit(); break;
+                    case R.id.nav_bakasura: fragmentTransaction.replace(R.id.containerView,new TabFragmentBakasura()).commit(); break;
+                    case R.id.nav_bastet: fragmentTransaction.replace(R.id.containerView,new TabFragmentBastet()).commit(); break;
+                    case R.id.nav_bellona: fragmentTransaction.replace(R.id.containerView,new TabFragmentBellona()).commit(); break;
+                    case R.id.nav_cabrakan: fragmentTransaction.replace(R.id.containerView,new TabFragmentCabrakan()).commit(); break;
+                    case R.id.nav_camazotz: fragmentTransaction.replace(R.id.containerView,new TabFragmentCamazotz()).commit(); break;
+                    case R.id.nav_cernunnos: fragmentTransaction.replace(R.id.containerView,new TabFragmentCernunnos()).commit(); break;
+                    case R.id.nav_chaac: fragmentTransaction.replace(R.id.containerView,new TabFragmentChaac()).commit(); break;
+                    case R.id.nav_change: fragmentTransaction.replace(R.id.containerView,new TabFragmentChange()).commit(); break;
+                    case R.id.nav_chiron: fragmentTransaction.replace(R.id.containerView,new TabFragmentChiron()).commit(); break;
+                    case R.id.nav_chronos: fragmentTransaction.replace(R.id.containerView,new TabFragmentChronos()).commit(); break;
+                    case R.id.nav_cupid: fragmentTransaction.replace(R.id.containerView,new TabFragmentCupid()).commit(); break;
+                    case R.id.nav_erlang_shen: fragmentTransaction.replace(R.id.containerView,new TabFragmentErlangShen()).commit(); break;
+                    case R.id.nav_fafnir: fragmentTransaction.replace(R.id.containerView,new TabFragmentFafnir()).commit(); break;
+                    case R.id.nav_fenrir: fragmentTransaction.replace(R.id.containerView,new TabFragmentFenrir()).commit(); break;
+                    case R.id.nav_freya: fragmentTransaction.replace(R.id.containerView,new TabFragmentFreya()).commit(); break;
+                    case R.id.nav_geb: fragmentTransaction.replace(R.id.containerView,new TabFragmentGeb()).commit(); break;
+                    case R.id.nav_guan_yu: fragmentTransaction.replace(R.id.containerView,new TabFragmentGuanYu()).commit(); break;
+                    case R.id.nav_hades: fragmentTransaction.replace(R.id.containerView,new TabFragmentHades()).commit(); break;
+                    case R.id.nav_he_bo: fragmentTransaction.replace(R.id.containerView,new TabFragmentHeBo()).commit(); break;
+                    case R.id.nav_hel: fragmentTransaction.replace(R.id.containerView,new TabFragmentHel()).commit(); break;
+                    case R.id.nav_hercules: fragmentTransaction.replace(R.id.containerView,new TabFragmentHercules()).commit(); break;
+                    case R.id.nav_hou_yi: fragmentTransaction.replace(R.id.containerView,new TabFragmentHouYi()).commit(); break;
+                    case R.id.nav_hun_batz: fragmentTransaction.replace(R.id.containerView,new TabFragmentHunBatz()).commit(); break;
+                    case R.id.nav_isis: fragmentTransaction.replace(R.id.containerView,new TabFragmentIsis()).commit(); break;
+                    case R.id.nav_izanami: fragmentTransaction.replace(R.id.containerView,new TabFragmentIzanami()).commit(); break;
+                    case R.id.nav_janus: fragmentTransaction.replace(R.id.containerView,new TabFragmentJanus()).commit(); break;
+                    case R.id.nav_jing_wei: fragmentTransaction.replace(R.id.containerView,new TabFragmentJingWei()).commit(); break;
+                    case R.id.nav_kali: fragmentTransaction.replace(R.id.containerView,new TabFragmentKali()).commit(); break;
+                    case R.id.nav_khepri: fragmentTransaction.replace(R.id.containerView,new TabFragmentKhepri()).commit(); break;
+                    case R.id.nav_kukulkan: fragmentTransaction.replace(R.id.containerView,new TabFragmentKukulkan()).commit(); break;
+                    case R.id.nav_kumbhakarna: fragmentTransaction.replace(R.id.containerView,new TabFragmentKumbhakarna()).commit(); break;
+                    case R.id.nav_kuzenbo: fragmentTransaction.replace(R.id.containerView,new TabFragmentKuzenbo()).commit(); break;
+                    case R.id.nav_loki: fragmentTransaction.replace(R.id.containerView,new TabFragmentLoki()).commit(); break;
+                    case R.id.nav_medusa: fragmentTransaction.replace(R.id.containerView,new TabFragmentMedusa()).commit(); break;
+                    case R.id.nav_mercury: fragmentTransaction.replace(R.id.containerView,new TabFragmentMercury()).commit(); break;
+                    case R.id.nav_neith: fragmentTransaction.replace(R.id.containerView,new TabFragmentNeith()).commit(); break;
+                    case R.id.nav_nemesis: fragmentTransaction.replace(R.id.containerView,new TabFragmentNemesis()).commit(); break;
+                    case R.id.nav_ne_zha: fragmentTransaction.replace(R.id.containerView,new TabFragmentNeZha()).commit(); break;
+                    case R.id.nav_nike: fragmentTransaction.replace(R.id.containerView,new TabFragmentNike()).commit(); break;
+                    case R.id.nav_nox: fragmentTransaction.replace(R.id.containerView,new TabFragmentNox()).commit(); break;
+                    case R.id.nav_nu_wa: fragmentTransaction.replace(R.id.containerView,new TabFragmentNuWa()).commit(); break;
+                    case R.id.nav_odin: fragmentTransaction.replace(R.id.containerView,new TabFragmentOdin()).commit(); break;
+                    case R.id.nav_osiris: fragmentTransaction.replace(R.id.containerView,new TabFragmentOsiris()).commit(); break;
+                    case R.id.nav_poseidon: fragmentTransaction.replace(R.id.containerView,new TabFragmentPoseidon()).commit(); break;
+                    case R.id.nav_ra: fragmentTransaction.replace(R.id.containerView,new TabFragmentRa()).commit(); break;
+                    case R.id.nav_raijin: fragmentTransaction.replace(R.id.containerView,new TabFragmentRaijin()).commit(); break;
+                    case R.id.nav_rama: fragmentTransaction.replace(R.id.containerView,new TabFragmentRama()).commit(); break;
+                    case R.id.nav_ratatoskr: fragmentTransaction.replace(R.id.containerView,new TabFragmentRatatoskr()).commit(); break;
+                    case R.id.nav_ravana: fragmentTransaction.replace(R.id.containerView,new TabFragmentRavana()).commit(); break;
+                    case R.id.nav_scylla: fragmentTransaction.replace(R.id.containerView,new TabFragmentScylla()).commit(); break;
+                    case R.id.nav_serqet: fragmentTransaction.replace(R.id.containerView,new TabFragmentSerqet()).commit(); break;
+                    case R.id.nav_skadi: fragmentTransaction.replace(R.id.containerView,new TabFragmentSkadi()).commit(); break;
+                    case R.id.nav_sobek: fragmentTransaction.replace(R.id.containerView,new TabFragmentSobek()).commit(); break;
+                    case R.id.nav_sol: fragmentTransaction.replace(R.id.containerView,new TabFragmentSol()).commit(); break;
+                    case R.id.nav_sun_wukong: fragmentTransaction.replace(R.id.containerView,new TabFragmentSunWukong()).commit(); break;
+                    case R.id.nav_susano: fragmentTransaction.replace(R.id.containerView,new TabFragmentSusano()).commit(); break;
+                    case R.id.nav_sylvanus: fragmentTransaction.replace(R.id.containerView,new TabFragmentSylvanus()).commit(); break;
+                    case R.id.nav_terra: fragmentTransaction.replace(R.id.containerView,new TabFragmentTerra()).commit(); break;
+                    case R.id.nav_thanatos: fragmentTransaction.replace(R.id.containerView,new TabFragmentThanatos()).commit(); break;
+                    case R.id.nav_the_morrigan: fragmentTransaction.replace(R.id.containerView,new TabFragmentTheMorrigan()).commit(); break;
+                    case R.id.nav_thor: fragmentTransaction.replace(R.id.containerView,new TabFragmentThor()).commit(); break;
+                    case R.id.nav_thoth: fragmentTransaction.replace(R.id.containerView,new TabFragmentThoth()).commit(); break;
+                    case R.id.nav_tyr: fragmentTransaction.replace(R.id.containerView,new TabFragmentTyr()).commit(); break;
+                    case R.id.nav_ullr: fragmentTransaction.replace(R.id.containerView,new TabFragmentUllr()).commit(); break;
+                    case R.id.nav_vamana: fragmentTransaction.replace(R.id.containerView,new TabFragmentVamana()).commit(); break;
+                    case R.id.nav_vulcan: fragmentTransaction.replace(R.id.containerView,new TabFragmentVulcan()).commit(); break;
+                    case R.id.nav_xbalanque: fragmentTransaction.replace(R.id.containerView,new TabFragmentXbalanque()).commit(); break;
+                    case R.id.nav_xing_tian: fragmentTransaction.replace(R.id.containerView,new TabFragmentXingTian()).commit(); break;
+                    case R.id.nav_ymir: fragmentTransaction.replace(R.id.containerView,new TabFragmentYmir()).commit(); break;
+                    case R.id.nav_zeus: fragmentTransaction.replace(R.id.containerView,new TabFragmentZeus()).commit(); break;
+                    case R.id.nav_zhong_kui: fragmentTransaction.replace(R.id.containerView,new TabFragmentZhongKui()).commit(); break;
                 }
 
                 return false;
             }
 
         });
-
 
         //Setup Drawer Toggle of the Toolbar
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
