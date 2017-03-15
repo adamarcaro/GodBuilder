@@ -4,23 +4,14 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="almost_black">#222222</color>
-    <color name="black">#000000</color>
+    <color name="black">#000</color>
     <color name="orange">#FA0</color>
     <color name="white">#FFF</color>
     <color name="holoBlue">#00ddff</color>
-    <color name="material_blue_grey_800">#223</color> //header colour
+    <color name="material_blue_grey_800">#222</color> //header colour
 
     <color name="godName">#FFF</color>
     <color name="godTitle">#DDD</color>
 
     <color name="calmblue">#1762A1</color>
-
-    <color name="japanese">#9d1717</color>
-    <color name="japaneseDark">#620e0e</color>
-
-    <color name="mayan">#29ab87</color>
-    <color name="mayanDark">#1a6d56</color>
-
-    <color name="hindu">#ab294d</color>
-    <color name="hinduDark">#6d1a31</color>
 </resources>
