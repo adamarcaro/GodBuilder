@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class GodDrawer extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
@@ -19,12 +21,13 @@ public class GodDrawer extends AppCompatActivity {
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     Toolbar toolbar;
+    public static ArrayList<God> gods = new ArrayList<God>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_god_drawer);
-
+        createGods();
         //Setup DrawerLayout and NavigationView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -40,7 +43,7 @@ public class GodDrawer extends AppCompatActivity {
         //Inflating first fragment
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit();
+        mFragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
 
         //Setup click events on the Navigation View Items.
         mNavigationView.setItemIconTintList(null);
@@ -52,6 +55,7 @@ public class GodDrawer extends AppCompatActivity {
                 int id = menuItem.getItemId();
 
                 switch(id) {
+                    case R.id.nav_home: fragmentTransaction.replace(R.id.containerView, new HomeFragment()).commit(); break;
                     case R.id.nav_agni: fragmentTransaction.replace(R.id.containerView,new TabFragmentAgni()).commit(); break;
                     case R.id.nav_ah_muzen_cab: fragmentTransaction.replace(R.id.containerView,new TabFragmentAhMuzenCab()).commit(); break;
                     case R.id.nav_ah_puch: fragmentTransaction.replace(R.id.containerView,new TabFragmentAhPuch()).commit(); break;
@@ -154,8 +158,6 @@ public class GodDrawer extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-        mDrawerLayout.openDrawer(Gravity.LEFT);
-
     }
 
     public void onBackPressed() {
@@ -165,6 +167,167 @@ public class GodDrawer extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void createGods() {
+        String[] names = {"Agni", "Ah Muzen Cab", "Ah Puch", "Amaterasu", "Anhur", "Anubis", "Ao Kuang", "Aphrodite", "Apollo", "Arachne", "Ares", "Artemis", "Athena", "Awilix",
+                "Bacchus", "Bakasura", "Bastet", "Bellona",
+                "Cabrakan", "Camazotz", "Cernunnos", "Chaac", "Chang'e", "Chiron", "Chronos", "Cupid",
+                "Erlang Shen",
+                "Fafnir", "Fenrir", "Freya",
+                "Geb", "Guan Yu",
+                "Hades", "He Bo", "Hel", "Hercules", "Hou Yi", "Hun Batz",
+                "Isis", "Izanami",
+                "Janus", "Jing Wei",
+                "Kali", "Khepri", "Kukulkan", "Kumbhakarna", "Kuzenbo",
+                "Loki",
+                "Medusa", "Mercury",
+                "Ne Zha", "Neith", "Nemesis", "Nike", "Nox", "Nu Wa",
+                "Odin", "Osiris",
+                "Poseidon",
+                "Ra", "Raijin", "Rama", "Ratatoskr", "Ravana",
+                "Scylla", "Serqet", "Skadi", "Sobek", "Sol", "Sun Wukong", "Susano", "Sylvanus",
+                "Terra", "Thanatos", "The Morrigan", "Thor", "Thoth", "Tyr",
+                "Ullr",
+                "Vamana", "Vulcan",
+                "Xbalanque", "Xing Tian",
+                "Ymir",
+                "Zeus", "Zhong Kui"};
+
+        int[] images = {R.drawable.agni, R.drawable.ah_muzen_cab, R.drawable.ah_puch, R.drawable.amaterasu, R.drawable.anhur, R.drawable.anubis, R.drawable.ao_kuang, R.drawable.aphrodite, R.drawable.apollo, R.drawable.arachne, R.drawable.ares, R.drawable.artemis, R.drawable.athena, R.drawable.awilix,
+                R.drawable.bacchus, R.drawable.bakasura, R.drawable.bastet, R.drawable.bellona,
+                R.drawable.cabrakan, R.drawable.camazotz, R.drawable.cernunnos, R.drawable.chaac, R.drawable.change, R.drawable.chiron, R.drawable.chronos, R.drawable.cupid,
+                R.drawable.erlang_shen,
+                R.drawable.fafnir, R.drawable.fenrir, R.drawable.freya,
+                R.drawable.geb, R.drawable.guan_yu,
+                R.drawable.hades, R.drawable.he_bo, R.drawable.hel, R.drawable.hercules, R.drawable.hou_yi, R.drawable.hun_batz,
+                R.drawable.isis, R.drawable.izanami,
+                R.drawable.janus, R.drawable.jing_wei,
+                R.drawable.kali, R.drawable.khepri, R.drawable.kukulkan, R.drawable.kumbhakarna, R.drawable.kuzenbo,
+                R.drawable.loki,
+                R.drawable.medusa, R.drawable.mercury,
+                R.drawable.ne_zha, R.drawable.neith, R.drawable.nemesis, R.drawable.nike, R.drawable.nox, R.drawable.nu_wa,
+                R.drawable.odin, R.drawable.osiris,
+                R.drawable.poseidon,
+                R.drawable.ra, R.drawable.raijin, R.drawable.rama, R.drawable.ratatoskr, R.drawable.ravana,
+                R.drawable.scylla, R.drawable.serqet, R.drawable.skadi, R.drawable.sobek, R.drawable.sol, R.drawable.sun_wukong, R.drawable.susano, R.drawable.sylvanus,
+                R.drawable.terra, R.drawable.thanatos, R.drawable.the_morrigan, R.drawable.thor, R.drawable.thoth, R.drawable.tyr,
+                R.drawable.ullr,
+                R.drawable.vamana, R.drawable.vulcan,
+                R.drawable.xbalanque, R.drawable.xing_tian,
+                R.drawable.ymir,
+                R.drawable.zeus, R.drawable.zhong_kui};
+
+        String[] pantheons = {"Hindu", "Mayan", "Mayan", "Japanese", "Egyptian", "Egyptian", "Chinese", "Greek", "Greek", "Greek", "Greek", "Greek", "Greek", "Mayan",
+        /*b*/   "Roman", "Hindu", "Egyptian", "Roman",
+        /*c*/   "Mayan", "Mayan", "Celtic", "Mayan", "Chinese", "Greek", "Greek", "Roman",
+        /*e*/   "Chinese",
+        /*f*/   "Norse", "Norse", "Norse",
+        /*g*/   "Egyptian", "Chinese",
+        /*h*/   "Greek", "Chinese", "Norse", "Roman", "Chinese", "Mayan",
+        /*i*/   "Egyptian", "Japanese",
+        /*j*/   "Roman", "Chinese",
+        /*k*/   "Hindu", "Egyptian", "Mayan", "Hindu", "Japanese",
+        /*l*/   "Norse",
+        /*m*/   "Greek", "Roman",
+        /*n*/   "Chinese", "Egyptian", "Greek", "Greek", "Roman", "Chinese",
+        /*o*/   "Norse", "Egyptian",
+        /*p*/   "Greek",
+        /*r*/   "Egyptian", "Japanese", "Hindu", "Norse", "Hindu",
+        /*s*/   "Greek", "Egyptian", "Norse", "Egyptian", "Norse", "Chinese", "Japanese", "Roman",
+        /*t*/   "Roman", "Greek", "Celtic", "Norse", "Egyptian", "Norse",
+        /*u*/   "Norse",
+        /*v*/   "Hindu", "Roman",
+        /*x*/   "Mayan", "Chinese",
+        /*y*/   "Norse",
+        /*z*/   "Greek", "Chinese"};
+
+        int[] pantheonIcons = {R.drawable.icon_hindu, R.drawable.icon_mayan, R.drawable.icon_mayan, R.drawable.icon_japanese, R.drawable.icon_egyptian, R.drawable.icon_egyptian, R.drawable.icon_chinese, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_mayan,
+        /*b*/   R.drawable.icon_roman, R.drawable.icon_hindu, R.drawable.icon_egyptian, R.drawable.icon_roman,
+        /*c*/   R.drawable.icon_mayan, R.drawable.icon_mayan, R.drawable.icon_celtic, R.drawable.icon_mayan, R.drawable.icon_chinese, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_roman,
+        /*e*/   R.drawable.icon_chinese,
+        /*f*/   R.drawable.icon_norse, R.drawable.icon_norse, R.drawable.icon_norse,
+        /*g*/   R.drawable.icon_egyptian, R.drawable.icon_chinese,
+        /*h*/   R.drawable.icon_greek, R.drawable.icon_chinese, R.drawable.icon_norse, R.drawable.icon_roman, R.drawable.icon_chinese, R.drawable.icon_mayan,
+        /*i*/   R.drawable.icon_egyptian, R.drawable.icon_japanese,
+        /*j*/   R.drawable.icon_roman, R.drawable.icon_chinese,
+        /*k*/   R.drawable.icon_hindu, R.drawable.icon_egyptian, R.drawable.icon_mayan, R.drawable.icon_hindu, R.drawable.icon_japanese,
+        /*l*/   R.drawable.icon_norse,
+        /*m*/   R.drawable.icon_greek, R.drawable.icon_roman,
+        /*n*/   R.drawable.icon_chinese, R.drawable.icon_egyptian, R.drawable.icon_greek, R.drawable.icon_greek, R.drawable.icon_roman, R.drawable.icon_chinese,
+        /*o*/   R.drawable.icon_norse, R.drawable.icon_egyptian,
+        /*p*/   R.drawable.icon_greek,
+        /*r*/   R.drawable.icon_egyptian, R.drawable.icon_japanese, R.drawable.icon_hindu, R.drawable.icon_norse, R.drawable.icon_hindu,
+        /*s*/   R.drawable.icon_greek, R.drawable.icon_egyptian, R.drawable.icon_norse, R.drawable.icon_egyptian, R.drawable.icon_norse, R.drawable.icon_chinese, R.drawable.icon_japanese, R.drawable.icon_roman,
+        /*t*/   R.drawable.icon_roman, R.drawable.icon_greek, R.drawable.icon_celtic, R.drawable.icon_norse, R.drawable.icon_egyptian, R.drawable.icon_norse,
+        /*u*/   R.drawable.icon_norse,
+        /*v*/   R.drawable.icon_hindu, R.drawable.icon_roman,
+        /*x*/   R.drawable.icon_mayan, R.drawable.icon_chinese,
+        /*y*/   R.drawable.icon_norse,
+        /*z*/   R.drawable.icon_greek, R.drawable.icon_chinese};
+
+        String[] types = {"Mage", "Hunter", "Mage", "Warrior", "Hunter", "Mage", "Mage", "Mage", "Hunter", "Assassin", "Guardian", "Hunter", "Guardian", "Assassin",
+        /*b*/   "Guardian", "Assassin", "Assassin", "Warrior",
+        /*c*/   "Guardian", "Assassin", "Hunter", "Warrior", "Mage", "Hunter", "Mage", "Hunter",
+        /*e*/   "Warrior",
+        /*f*/   "Guardian", "Assassin", "Mage",
+        /*g*/   "Guardian", "Warrior",
+        /*h*/   "Mage", "Mage", "Mage", "Warrior", "Hunter", "Assassin",
+        /*i*/   "Mage", "Hunter",
+        /*j*/   "Mage", "Hunter",
+        /*k*/   "Assassin", "Guardian", "Mage", "Guardian", "Guardian",
+        /*l*/   "Assassin",
+        /*m*/   "Hunter", "Assassin",
+        /*n*/   "Assassin", "Hunter", "Assassin", "Warrior", "Mage", "Mage",
+        /*o*/   "Warrior", "Warrior",
+        /*p*/   "Mage",
+        /*r*/   "Mage", "Mage", "Hunter", "Assassin", "Warrior",
+        /*s*/   "Mage", "Assassin", "Hunter", "Guardian", "Mage", "Warrior", "Assassin", "Guardian",
+        /*t*/   "Guardian", "Assassin", "Mage", "Assassin", "Mage", "Warrior",
+        /*u*/   "Hunter",
+        /*v*/   "Warrior", "Mage",
+        /*x*/   "Hunter", "Guardian",
+        /*y*/   "Guardian",
+        /*z*/   "Mage", "Mage"};
+
+        int[] typeIcons = {R.drawable.icon_mage, R.drawable.icon_hunter, R.drawable.icon_mage, R.drawable.icon_warrior, R.drawable.icon_hunter, R.drawable.icon_mage, R.drawable.icon_mage, R.drawable.icon_mage, R.drawable.icon_hunter, R.drawable.icon_assassin, R.drawable.icon_guardian, R.drawable.icon_hunter, R.drawable.icon_guardian, R.drawable.icon_assassin,
+        /*b*/   R.drawable.icon_guardian, R.drawable.icon_assassin, R.drawable.icon_assassin, R.drawable.icon_warrior,
+        /*c*/   R.drawable.icon_guardian, R.drawable.icon_assassin, R.drawable.icon_guardian, R.drawable.icon_warrior, R.drawable.icon_mage, R.drawable.icon_hunter, R.drawable.icon_mage, R.drawable.icon_hunter,
+        /*e*/   R.drawable.icon_warrior,
+        /*f*/   R.drawable.icon_guardian, R.drawable.icon_assassin, R.drawable.icon_mage,
+        /*g*/   R.drawable.icon_guardian, R.drawable.icon_warrior,
+        /*h*/   R.drawable.icon_mage, R.drawable.icon_mage, R.drawable.icon_mage, R.drawable.icon_warrior, R.drawable.icon_hunter, R.drawable.icon_assassin,
+        /*i*/   R.drawable.icon_mage, R.drawable.icon_hunter,
+        /*j*/   R.drawable.icon_mage, R.drawable.icon_hunter,
+        /*k*/   R.drawable.icon_assassin, R.drawable.icon_guardian, R.drawable.icon_mage, R.drawable.icon_guardian, R.drawable.icon_guardian,
+        /*l*/   R.drawable.icon_assassin,
+        /*m*/   R.drawable.icon_hunter, R.drawable.icon_assassin,
+        /*n*/   R.drawable.icon_assassin, R.drawable.icon_hunter, R.drawable.icon_assassin, R.drawable.icon_warrior, R.drawable.icon_mage, R.drawable.icon_mage,
+        /*o*/   R.drawable.icon_warrior, R.drawable.icon_warrior,
+        /*p*/   R.drawable.icon_mage,
+        /*r*/   R.drawable.icon_mage, R.drawable.icon_mage, R.drawable.icon_hunter, R.drawable.icon_assassin, R.drawable.icon_warrior,
+        /*s*/   R.drawable.icon_mage, R.drawable.icon_assassin, R.drawable.icon_hunter, R.drawable.icon_guardian, R.drawable.icon_mage, R.drawable.icon_warrior, R.drawable.icon_assassin, R.drawable.icon_guardian,
+        /*t*/   R.drawable.icon_guardian, R.drawable.icon_assassin, R.drawable.icon_mage, R.drawable.icon_assassin, R.drawable.icon_mage, R.drawable.icon_warrior,
+        /*u*/   R.drawable.icon_hunter,
+        /*v*/   R.drawable.icon_warrior, R.drawable.icon_mage,
+        /*x*/   R.drawable.icon_hunter, R.drawable.icon_guardian,
+        /*y*/   R.drawable.icon_guardian,
+        /*z*/   R.drawable.icon_mage, R.drawable.icon_mage};
+
+        ArrayList<God> gods = new ArrayList<God>();
+        God god;
+
+        for(int i = 0; i < names.length; i++)
+        {
+            god = new God(names[i], images[i], pantheons[i], pantheonIcons[i], types[i], typeIcons[i]);
+            gods.add(god);
+        }
+
+        this.gods = gods;
+    }
+
+    public ArrayList<God> getGods() {
+        return gods;
     }
 }
 

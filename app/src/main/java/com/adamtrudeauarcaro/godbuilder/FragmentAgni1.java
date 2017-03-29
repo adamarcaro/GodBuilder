@@ -17,12 +17,14 @@ import android.widget.TextView;
 public class FragmentAgni1 extends Fragment {
 
     View myView;
+    String godName;
 
     public FragmentAgni1() {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.god_build, container, false);
+        godName = getArguments().getString("godName", "");
 
         //Initializing ImageButtons
         final ImageButton starter = (ImageButton) myView.findViewById(R.id.imageStarterItem);
@@ -47,34 +49,34 @@ public class FragmentAgni1 extends Fragment {
         final TextView item6Name = (TextView) myView.findViewById(R.id.nameItem6);
 
         //Loading build images
-        starter.setImageResource(getImage("agni_starter"));
-        relic1.setImageResource(getImage("agni_relic1"));
-        relic2.setImageResource(getImage("agni_relic2"));
-        item1.setImageResource(getImage("agni_item1"));
-        item2.setImageResource(getImage("agni_item2"));
-        item3.setImageResource(getImage("agni_item3"));
-        item4.setImageResource(getImage("agni_item4"));
-        item5.setImageResource(getImage("agni_item5"));
-        item6.setImageResource(getImage("agni_item6"));
+        starter.setImageResource(getImage(godName + "_starter"));
+        relic1.setImageResource(getImage(godName + "_relic1"));
+        relic2.setImageResource(getImage(godName + "_relic2"));
+        item1.setImageResource(getImage(godName + "_item1"));
+        item2.setImageResource(getImage(godName + "_item2"));
+        item3.setImageResource(getImage(godName + "_item3"));
+        item4.setImageResource(getImage(godName + "_item4"));
+        item5.setImageResource(getImage(godName + "_item5"));
+        item6.setImageResource(getImage(godName + "_item6"));
 
         //Loading build names
-        starterName.setText(getName("agni_starter_name"));
-        relic1Name.setText(getName("agni_relic1_name"));
-        relic2Name.setText(getName("agni_relic2_name"));
-        item1Name.setText(getName("agni_item1_name"));
-        item2Name.setText(getName("agni_item2_name"));
-        item3Name.setText(getName("agni_item3_name"));
-        item4Name.setText(getName("agni_item4_name"));
-        item5Name.setText(getName("agni_item5_name"));
-        item6Name.setText(getName("agni_item6_name"));
+        starterName.setText(getName(godName + "_starter_name"));
+        relic1Name.setText(getName(godName + "_relic1_name"));
+        relic2Name.setText(getName(godName + "_relic2_name"));
+        item1Name.setText(getName(godName + "_item1_name"));
+        item2Name.setText(getName(godName + "_item2_name"));
+        item3Name.setText(getName(godName + "_item3_name"));
+        item4Name.setText(getName(godName + "_item4_name"));
+        item5Name.setText(getName(godName + "_item5_name"));
+        item6Name.setText(getName(godName + "_item6_name"));
 
         starter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                ItemMagStarterFragment dialog = ItemMagStarterFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagStarterFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_starter_name", name);
-                        saveImage("agni_starter", resourceId);
+                ItemMagStarterFragment1 dialog = ItemMagStarterFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagStarterFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_starter_name", name);
+                        saveImage(godName + "_starter", imageName);
                         starter.setImageResource(resourceId);
                         starterName.setText(name);
                     }
@@ -86,12 +88,12 @@ public class FragmentAgni1 extends Fragment {
         relic1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemRelicFragment dialog = ItemRelicFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemRelicFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_relic1_name", name);
-                        saveImage("agni_relic1", resourceId);
-                        relic1.setImageResource(resourceId);
+                ItemRelicFragment1 dialog = ItemRelicFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemRelicFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_relic1_name", name);
+                        saveImage(godName + "_relic1", imageName);
+                        starter.setImageResource(resourceId);
                         relic1Name.setText(name);
                     }
                 });
@@ -102,12 +104,12 @@ public class FragmentAgni1 extends Fragment {
         relic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemRelicFragment dialog = ItemRelicFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemRelicFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_relic2_name", name);
-                        saveImage("agni_relic2", resourceId);
-                        relic2.setImageResource(resourceId);
+                ItemRelicFragment1 dialog = ItemRelicFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemRelicFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_relic2_name", name);
+                        saveImage(godName + "_relic2", imageName);
+                        starter.setImageResource(resourceId);
                         relic2Name.setText(name);
                     }
                 });
@@ -118,12 +120,12 @@ public class FragmentAgni1 extends Fragment {
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item1_name", name);
-                        saveImage("agni_item1", resourceId);
-                        item1.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item1_name", name);
+                        saveImage(godName + "_item1", imageName);
+                        starter.setImageResource(resourceId);
                         item1Name.setText(name);
                     }
                 });
@@ -134,12 +136,12 @@ public class FragmentAgni1 extends Fragment {
         item2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item2_name", name);
-                        saveImage("agni_item2", resourceId);
-                        item2.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item2_name", name);
+                        saveImage(godName + "_item2", imageName);
+                        starter.setImageResource(resourceId);
                         item2Name.setText(name);
                     }
                 });
@@ -150,12 +152,12 @@ public class FragmentAgni1 extends Fragment {
         item3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item3_name", name);
-                        saveImage("agni_item3", resourceId);
-                        item3.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item3_name", name);
+                        saveImage(godName + "_item3", imageName);
+                        starter.setImageResource(resourceId);
                         item3Name.setText(name);
                     }
                 });
@@ -166,12 +168,12 @@ public class FragmentAgni1 extends Fragment {
         item4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item4_name", name);
-                        saveImage("agni_item4", resourceId);
-                        item4.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item4_name", name);
+                        saveImage(godName + "_item4", imageName);
+                        starter.setImageResource(resourceId);
                         item4Name.setText(name);
                     }
                 });
@@ -182,12 +184,12 @@ public class FragmentAgni1 extends Fragment {
         item5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item5_name", name);
-                        saveImage("agni_item5", resourceId);
-                        item5.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item5_name", name);
+                        saveImage(godName + "_item5", imageName);
+                        starter.setImageResource(resourceId);
                         item5Name.setText(name);
                     }
                 });
@@ -198,12 +200,12 @@ public class FragmentAgni1 extends Fragment {
         item6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                ItemMagFragment dialog = ItemMagFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemMagFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, int resourceId) {
-                        saveName("agni_item6_name", name);
-                        saveImage("agni_item6", resourceId);
-                        item6.setImageResource(resourceId);
+                ItemMagFragment1 dialog = ItemMagFragment1.newInstance();
+                dialog.setOnListItemSelectedListener(new ItemMagFragment1.OnListItemClickedListener() {
+                    public void onListItemClick(String name, String imageName, int resourceId) {
+                        saveName(godName + "_item6_name", name);
+                        saveImage(godName + "_item6", imageName);
+                        starter.setImageResource(resourceId);
                         item6Name.setText(name);
                     }
                 });
@@ -214,16 +216,17 @@ public class FragmentAgni1 extends Fragment {
         return myView;
     }
 
-    public int getImage(String item){
+    public int getImage(String item) {
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int id = pref.getInt(item, R.drawable.no_item);
+        String drawable_name = pref.getString(item, "no_item");
+        final int id = getActivity().getResources().getIdentifier(item, drawable_name, getActivity().getPackageName());
         return id;
     }
 
-    public void saveImage(String item, int resourceId){
+    public void saveImage(String item, String drawable_name) {
         SharedPreferences starterSP = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = starterSP.edit();
-        edit.putInt(item, resourceId);
+        edit.putString(item, drawable_name);
         edit.apply();
     }
 

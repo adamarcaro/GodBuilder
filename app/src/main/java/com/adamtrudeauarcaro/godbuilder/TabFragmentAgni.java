@@ -59,7 +59,15 @@ public class TabFragmentAgni extends Fragment {
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return new FragmentAgni1();
+                case 0 : {
+                    FragmentAgni1 myFragment = new FragmentAgni1();
+
+                    Bundle args = new Bundle();
+                    args.putString("godName", "agni");
+                    myFragment.setArguments(args);
+
+                    return myFragment;
+                }
                 case 1 : return new FragmentAgni2();
                 case 2 : return new FragmentAgni3();
             }
