@@ -20,7 +20,7 @@ public class ItemMagStarterFragment extends DialogFragment {
     Button btn;
     ListView lv;
     SearchView sv;
-    String[] names={"No starter", "Bumba's Mask", "Rangda's Mask", "Mark of the Vanguard", "Sand of Time",
+    String[] names={"No starter", "Bumba's Mask", "Rangda's Mask", "Mark of the Vanguard", "Sands of Time",
                     "Soul Stone", "Swift Wing", "Vampiric Shroud", "Watcher's Gift"};
     int[] images={R.drawable.no_starter, R.drawable.bumbas_mask, R.drawable.rangdas_mask, R.drawable.mark_of_the_vanguard, R.drawable.sands_of_time,
                     R.drawable.soul_stone, R.drawable.swift_wing, R.drawable.vampiric_shroud, R.drawable.watchers_gift};
@@ -61,7 +61,8 @@ public class ItemMagStarterFragment extends DialogFragment {
             {
                 String name = adapter.getItem(position).getName();
                 int image_id = adapter.getItem(position).getImage();
-                mListener.onListItemClick(name, image_id);
+                String image_name = getActivity().getResources().getResourceEntryName(image_id);
+                mListener.onListItemClick(name, image_name, image_id);
                 dismiss();
             }
         });
@@ -99,7 +100,7 @@ public class ItemMagStarterFragment extends DialogFragment {
 
     //Setting listener to connect list to God fragment
     public interface OnListItemClickedListener {
-        void onListItemClick(String name, int resourceId);
+        void onListItemClick(String name, String imageName, int resourceId);
     }
 
     OnListItemClickedListener mListener;
