@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/god_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="true"
         android:padding="5dp"
         app:srcCompat="@drawable/anubis" />
 
@@ -16,22 +17,43 @@
         android:id="@+id/god_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/god_image"
         android:padding="10dp"
         android:text="TextView"
         android:textSize="16sp" />
-<!--
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <ImageView
+        android:id="@+id/type"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="right"
-        android:background="@drawable/toggle_selector"
-        android:checked="false"
-        android:text=""
-        android:textOff=""
-        android:textOn="" />
-        -->
+        android:layout_toLeftOf="@+id/pantheon"
+        app:srcCompat="@drawable/icon_mage" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/pantheon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="right"
+        app:srcCompat="@drawable/icon_egyptian" />
+    <!--
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right"
+            android:background="@drawable/toggle_selector"
+            android:checked="false"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+            -->
+
+</RelativeLayout>

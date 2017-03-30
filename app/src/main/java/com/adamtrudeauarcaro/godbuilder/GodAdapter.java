@@ -1,5 +1,7 @@
 package com.adamtrudeauarcaro.godbuilder;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +37,7 @@ public class GodAdapter extends BaseAdapter implements Filterable {
         return gods.size();
     }
 
-    public Object getItem(int position) {
+    public God getItem(int position) {
         return gods.get(position);
     }
 
@@ -53,9 +55,13 @@ public class GodAdapter extends BaseAdapter implements Filterable {
 
         TextView name = (TextView) convertView.findViewById(R.id.god_name);
         ImageView image = (ImageView) convertView.findViewById(R.id.god_image);
+        ImageView pantheon =(ImageView) convertView.findViewById(R.id.pantheon);
+        ImageView type =(ImageView) convertView.findViewById(R.id.type);
 
         name.setText(gods.get(position).getName());
         image.setImageResource(gods.get(position).getImage());
+        pantheon.setImageResource(gods.get(position).getPantheonIcon());
+        type.setImageResource(gods.get(position).getTypeIcon());
 
         return convertView;
     }
