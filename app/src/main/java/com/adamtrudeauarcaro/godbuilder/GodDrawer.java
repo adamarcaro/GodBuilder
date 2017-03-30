@@ -3,6 +3,7 @@ package com.adamtrudeauarcaro.godbuilder;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -52,13 +53,16 @@ public class GodDrawer extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 mDrawerLayout.closeDrawers();
-                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 int id = menuItem.getItemId();
 
                 switch(id) {
-                    case R.id.nav_home: fragmentTransaction.replace(R.id.containerView, new HomeFragment()).commit(); break;
+                    case R.id.nav_home: {
+                        Fragment myFragment = new HomeFragment();
+                        replaceFragment(myFragment);
+                        break;
+                    }
                     case R.id.nav_agni: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "agni");
@@ -66,11 +70,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ah_muzen_cab: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ah_muzen_cab");
@@ -78,11 +82,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ah_puch: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ah_puch");
@@ -90,11 +94,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_amaterasu: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "amaterasu");
@@ -102,11 +106,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_japanese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_anhur: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "anhur");
@@ -114,11 +118,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_anubis: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "anubis");
@@ -126,11 +130,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ao_kuang: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ao_kuang");
@@ -138,11 +142,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_aphrodite: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "aphrodite");
@@ -150,11 +154,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_apollo: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "apollo");
@@ -162,11 +166,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_arachne: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "arachne");
@@ -174,11 +178,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ares: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ares");
@@ -186,11 +190,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_artemis: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "artemis");
@@ -198,11 +202,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_athena: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "athena");
@@ -210,11 +214,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_awilix: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "awilix");
@@ -222,11 +226,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_bacchus: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "bacchus");
@@ -234,11 +238,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_bakasura: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "bakasura");
@@ -246,11 +250,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_bastet: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "bastet");
@@ -258,11 +262,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_bellona: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "bellona");
@@ -270,11 +274,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_cabrakan: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "cabrakan");
@@ -282,11 +286,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_camazotz: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "camazotz");
@@ -294,11 +298,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_cernunnos: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "cernunnos");
@@ -306,11 +310,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_celtic);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_chaac: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "chaac");
@@ -318,11 +322,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_change: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "change");
@@ -330,11 +334,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_chiron: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "chiron");
@@ -342,11 +346,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_chronos: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "chronos");
@@ -354,11 +358,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_cupid: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "cupid");
@@ -366,11 +370,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_erlang_shen: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "erlang_shen");
@@ -378,11 +382,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_fafnir: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "fafnir");
@@ -390,11 +394,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_fenrir: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "fenrir");
@@ -402,11 +406,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_freya: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "freya");
@@ -414,11 +418,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_geb: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "geb");
@@ -426,11 +430,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_guan_yu: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "guan_yu");
@@ -438,11 +442,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_hades: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "hades");
@@ -450,11 +454,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_he_bo: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "he_bo");
@@ -462,11 +466,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_hel: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "hel");
@@ -474,11 +478,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_hercules: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "hercules");
@@ -486,11 +490,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_hou_yi: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "hou_yi");
@@ -498,11 +502,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_hun_batz: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "hun_batz");
@@ -510,11 +514,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_isis: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "isis");
@@ -522,11 +526,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_izanami: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "izanami");
@@ -534,11 +538,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_japanese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_janus: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "janus");
@@ -546,11 +550,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_jing_wei:  {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "jing_wei");
@@ -558,11 +562,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_kali: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "kali");
@@ -570,11 +574,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_khepri: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "khepri");
@@ -582,11 +586,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_kukulkan: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "kukulkan");
@@ -594,11 +598,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_kumbhakarna: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "kumbhakarna");
@@ -606,11 +610,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_kuzenbo: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "kuzenbo");
@@ -618,11 +622,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_japanese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_loki: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "loki");
@@ -630,11 +634,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_medusa: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "medusa");
@@ -642,11 +646,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_mercury: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "mercury");
@@ -654,11 +658,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_neith: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "neith");
@@ -666,11 +670,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_nemesis: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "nemesis");
@@ -678,11 +682,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ne_zha: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ne_zha");
@@ -690,11 +694,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_nike: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "nike");
@@ -702,11 +706,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_nox: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "nox");
@@ -714,11 +718,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_nu_wa: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "nu_wa");
@@ -726,11 +730,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_odin: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "odin");
@@ -738,11 +742,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_osiris: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "osiris");
@@ -750,11 +754,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_poseidon: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "poseidon");
@@ -762,11 +766,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ra: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ra");
@@ -774,11 +778,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_raijin: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "raijin");
@@ -786,11 +790,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_japanese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_rama: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "rama");
@@ -798,11 +802,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ratatoskr: {
-                        TabFragmentRatatoskr myFragment = new TabFragmentRatatoskr();
+                        Fragment myFragment = new TabFragmentRatatoskr();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ratatoskr");
@@ -810,11 +814,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ravana: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ravana");
@@ -822,11 +826,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_scylla: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "scylla");
@@ -834,11 +838,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_serqet: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "serqet");
@@ -846,11 +850,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_skadi: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "skadi");
@@ -858,11 +862,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_sobek: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "sobek");
@@ -870,11 +874,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_sol: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "sol");
@@ -882,11 +886,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_sun_wukong: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "sun_wukong");
@@ -894,11 +898,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_susano: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "susano");
@@ -906,11 +910,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_japanese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_sylvanus: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "sylvanus");
@@ -918,11 +922,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_terra: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "terra");
@@ -930,11 +934,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_thanatos: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "thanatos");
@@ -942,11 +946,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_the_morrigan: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "the_morrigan");
@@ -954,11 +958,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_celtic);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_thor: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "thor");
@@ -966,11 +970,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_thoth: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "thoth");
@@ -978,11 +982,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_egyptian);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_tyr: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "tyr");
@@ -990,11 +994,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ullr: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ullr");
@@ -1002,11 +1006,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_vamana: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "vamana");
@@ -1014,11 +1018,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_hindu);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_vulcan: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "vulcan");
@@ -1026,11 +1030,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_roman);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_xbalanque: {
-                        TabFragmentPhys myFragment = new TabFragmentPhys();
+                        Fragment myFragment = new TabFragmentPhys();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "xbalanque");
@@ -1038,11 +1042,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_mayan);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_xing_tian: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "xing_tian");
@@ -1050,11 +1054,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_ymir: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "ymir");
@@ -1062,11 +1066,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_norse);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_zeus: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "zeus");
@@ -1074,11 +1078,11 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_greek);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                     case R.id.nav_zhong_kui: {
-                        TabFragmentMag myFragment = new TabFragmentMag();
+                        Fragment myFragment = new TabFragmentMag();
 
                         Bundle args = new Bundle();
                         args.putString("infoGodName", "zhong_kui");
@@ -1086,7 +1090,7 @@ public class GodDrawer extends AppCompatActivity {
                         args.putInt("infoPantheonIcon", R.drawable.icon_chinese);
                         myFragment.setArguments(args);
 
-                        fragmentTransaction.replace(R.id.containerView, myFragment).commit();
+                        replaceFragment(myFragment);
                         break;
                     }
                 }
@@ -1276,6 +1280,13 @@ public class GodDrawer extends AppCompatActivity {
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void replaceFragment(Fragment myFragment) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.replace(R.id.containerView, myFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public ArrayList<God> getGods() {

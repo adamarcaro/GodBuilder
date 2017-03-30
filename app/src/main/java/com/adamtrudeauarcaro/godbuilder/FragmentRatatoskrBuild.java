@@ -65,7 +65,7 @@ public class FragmentRatatoskrBuild extends Fragment {
         starter.setImageResource(getImage(godName + "_starter_" + buildNum));
         relic1.setImageResource(getImage(godName + "_relic1_" + buildNum));
         relic2.setImageResource(getImage(godName + "_relic2_" + buildNum));
-        item1.setImageResource(getImage(godName + "_item1_" + buildNum));
+        item1.setImageResource(R.drawable.acorn);
         item2.setImageResource(getImage(godName + "_item2_" + buildNum));
         item3.setImageResource(getImage(godName + "_item3_" + buildNum));
         item4.setImageResource(getImage(godName + "_item4_" + buildNum));
@@ -76,7 +76,7 @@ public class FragmentRatatoskrBuild extends Fragment {
         starterName.setText(getName(godName + "_starter_name_" + buildNum));
         relic1Name.setText(getName(godName + "_relic1_name_" + buildNum));
         relic2Name.setText(getName(godName + "_relic2_name_" + buildNum));
-        item1Name.setText(getName(godName + "_item1_name_" + buildNum));
+        item1Name.setText("Acorn of Yggdrasil");
         item2Name.setText(getName(godName + "_item2_name_" + buildNum));
         item3Name.setText(getName(godName + "_item3_name_" + buildNum));
         item4Name.setText(getName(godName + "_item4_name_" + buildNum));
@@ -127,22 +127,6 @@ public class FragmentRatatoskrBuild extends Fragment {
                     }
                 });
                 dialog.show(getActivity().getFragmentManager(), "relic2Dialog");
-            }
-        });
-
-        item1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                ItemRatatoskrFragment dialog = ItemRatatoskrFragment.newInstance();
-                dialog.setOnListItemSelectedListener(new ItemRatatoskrFragment.OnListItemClickedListener() {
-                    public void onListItemClick(String name, String imageName, int resourceId) {
-                        saveName(godName + "_item1_name_" + buildNum, name);
-                        saveImage(godName + "_item1_" + buildNum, imageName);
-                        item1.setImageResource(getImage(godName + "_item1_" + buildNum));
-                        item1Name.setText(name);
-                    }
-                });
-                dialog.show(getActivity().getFragmentManager(), "item1Dialog");
             }
         });
 
