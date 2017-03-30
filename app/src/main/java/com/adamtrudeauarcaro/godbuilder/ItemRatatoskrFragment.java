@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -16,13 +15,12 @@ import android.widget.SearchView.OnQueryTextListener;
 import java.util.ArrayList;
 
 
-public class ItemPhysFragment extends DialogFragment {
+public class ItemRatatoskrFragment extends DialogFragment {
 
     Button btn;
     ListView lv;
     SearchView sv;
-    String[] names={"Ninja Tabi", "Reinforced Greaves", "Talaria Boots", "Warrior Tabi",
-            "Ancile", "Asi",
+    String[] names={"Ancile", "Asi",
             "Blackthorn Hammer", "Bloodforge", "Brawler's Beat Stick", "Breastplate of Valor", "Bulwark of Hope",
             "Deathbringer", "Devourer's Gauntlet",
             "Emperor's Armor",
@@ -40,8 +38,7 @@ public class ItemPhysFragment extends DialogFragment {
             "The Crusher", "The Executioner", "Titan's Bane", "Transcendence",
             "Void Shield",
             "Wind Demon", "Winged Blade", "Witchblade"};
-    int[] images={R.drawable.ninja_tabi, R.drawable.reinforced_greaves, R.drawable.talaria_boots, R.drawable.warrior_tabi,
-            R.drawable.ancile, R.drawable.asi,
+    int[] images={R.drawable.ancile, R.drawable.asi,
             R.drawable.blackthorn_hammer, R.drawable.bloodforge, R.drawable.brawlers_beat_stick, R.drawable.breastplate_of_valor, R.drawable.bulwark_of_hope,
             R.drawable.deathbringer, R.drawable.devourers_gauntlet,
             R.drawable.emperors_armor,
@@ -113,9 +110,9 @@ public class ItemPhysFragment extends DialogFragment {
     }
 
     //Fragment contstructor
-    public static ItemPhysFragment newInstance()
+    public static ItemRatatoskrFragment newInstance()
     {
-        ItemPhysFragment f = new ItemPhysFragment();
+        ItemRatatoskrFragment f = new ItemRatatoskrFragment();
         return f;
     }
 

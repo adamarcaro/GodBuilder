@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ItemRelicFragment extends DialogFragment {
@@ -66,7 +63,8 @@ public class ItemRelicFragment extends DialogFragment {
             {
                 String name = adapter.getItem(position).getName();
                 int image_id = adapter.getItem(position).getImage();
-                mListener.onListItemClick(name, image_id);
+                String image_name = getActivity().getResources().getResourceEntryName(image_id);
+                mListener.onListItemClick(name, image_name, image_id);
                 dismiss();
             }
         });
@@ -104,7 +102,7 @@ public class ItemRelicFragment extends DialogFragment {
 
     //Setting listener to connect list to God fragment
     public interface OnListItemClickedListener {
-        void onListItemClick(String name, int resourceId);
+        void onListItemClick(String name, String imageName, int resourceId);
     }
 
     OnListItemClickedListener mListener;

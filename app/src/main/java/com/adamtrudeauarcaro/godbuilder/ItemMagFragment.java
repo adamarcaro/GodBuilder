@@ -92,7 +92,8 @@ public class ItemMagFragment extends DialogFragment {
             {
                 String name = adapter.getItem(position).getName();
                 int image_id = adapter.getItem(position).getImage();
-                mListener.onListItemClick(name, image_id);
+                String image_name = getActivity().getResources().getResourceEntryName(image_id);
+                mListener.onListItemClick(name, image_name, image_id);
                 dismiss();
             }
         });
@@ -130,7 +131,7 @@ public class ItemMagFragment extends DialogFragment {
 
     //Setting listener to connect list to God fragment
     public interface OnListItemClickedListener {
-        void onListItemClick(String name, int resourceId);
+        void onListItemClick(String name, String imageName, int resourceId);
     }
 
     OnListItemClickedListener mListener;

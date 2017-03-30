@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TabFragmentRatatoskr extends Fragment {
+public class TabFragmentPhys extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
@@ -65,7 +65,7 @@ public class TabFragmentRatatoskr extends Fragment {
         {
             switch (position){
                 case 0 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentPhysBuild myFragment = new FragmentPhysBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
@@ -75,7 +75,7 @@ public class TabFragmentRatatoskr extends Fragment {
                     return myFragment;
                 }
                 case 1 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentPhysBuild myFragment = new FragmentPhysBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
@@ -85,7 +85,7 @@ public class TabFragmentRatatoskr extends Fragment {
                     return myFragment;
                 }
                 case 2 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentPhysBuild myFragment = new FragmentPhysBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);

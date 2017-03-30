@@ -3,6 +3,7 @@ package com.adamtrudeauarcaro.godbuilder;
 /**
  * Created by adama on 2017-03-13.
  */
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TabFragmentRatatoskr extends Fragment {
+public class TabFragmentMag extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
@@ -24,9 +25,9 @@ public class TabFragmentRatatoskr extends Fragment {
     int infoGodImage, infoPantheonIcon;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        infoGodName = getArguments().getString("infoGodName", "ah_muzen_cab");
-        infoGodImage = getArguments().getInt("infoGodImage", R.drawable.ah_muzen_cab);
-        infoPantheonIcon = getArguments().getInt("infoPantheonIcon", R.drawable.icon_mayan);
+        infoGodName = getArguments().getString("infoGodName", "agni");
+        infoGodImage = getArguments().getInt("infoGodImage", R.drawable.agni);
+        infoPantheonIcon = getArguments().getInt("infoPantheonIcon", R.drawable.icon_hindu);
 
         //Inflate tab_layout_agni and setup Views.
         View myView =  inflater.inflate(R.layout.tab_layout,null);
@@ -65,7 +66,7 @@ public class TabFragmentRatatoskr extends Fragment {
         {
             switch (position){
                 case 0 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentMagBuild myFragment = new FragmentMagBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
@@ -75,7 +76,7 @@ public class TabFragmentRatatoskr extends Fragment {
                     return myFragment;
                 }
                 case 1 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentMagBuild myFragment = new FragmentMagBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
@@ -85,7 +86,7 @@ public class TabFragmentRatatoskr extends Fragment {
                     return myFragment;
                 }
                 case 2 : {
-                    FragmentRatatoskrBuild myFragment = new FragmentRatatoskrBuild();
+                    FragmentMagBuild myFragment = new FragmentMagBuild();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
