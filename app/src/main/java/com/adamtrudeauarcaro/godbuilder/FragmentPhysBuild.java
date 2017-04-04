@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -19,6 +23,7 @@ public class FragmentPhysBuild extends Fragment {
     View myView;
     String godName;
     String buildNum;
+    AlertDialog buildNameDialog;
 
     public FragmentPhysBuild() {
     }
@@ -38,6 +43,10 @@ public class FragmentPhysBuild extends Fragment {
             editor.putInt("cleared", 1);
             editor.apply();
         }
+
+        //Initializing Build Name
+        final TextView buildName = (TextView) myView.findViewById(R.id.buildName);
+        final ImageView editNameButton = (ImageView) myView.findViewById(R.id.editNameButton);
 
         //Initializing ImageButtons
         final ImageButton starter = (ImageButton) myView.findViewById(R.id.imageStarterItem);
@@ -61,6 +70,9 @@ public class FragmentPhysBuild extends Fragment {
         final TextView item5Name = (TextView) myView.findViewById(R.id.nameItem5);
         final TextView item6Name = (TextView) myView.findViewById(R.id.nameItem6);
 
+        //Loading build name
+        buildName.setText(getBuildName(godName + "_build_" + buildNum));
+
         //Loading build images
         starter.setImageResource(getImage(godName + "_starter_" + buildNum));
         relic1.setImageResource(getImage(godName + "_relic1_" + buildNum));
@@ -82,6 +94,40 @@ public class FragmentPhysBuild extends Fragment {
         item4Name.setText(getName(godName + "_item4_name_" + buildNum));
         item5Name.setText(getName(godName + "_item5_name_" + buildNum));
         item6Name.setText(getName(godName + "_item6_name_" + buildNum));
+
+        editNameButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                View mView = getActivity().getLayoutInflater().inflate(R.layout.build_name, null);
+                final EditText nameField = (EditText) mView.findViewById(R.id.buildName);
+                Button confirm = (Button) mView.findViewById(R.id.confirm);
+                Button cancel = (Button) mView.findViewById(R.id.cancel);
+
+                nameField.setMaxLines(1);
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                mBuilder.setTitle("Build Name");
+                mBuilder.setView(mView);
+                mBuilder.setCancelable(false);
+
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        String name = nameField.getText().toString();
+                        saveName(godName + "_build_" + buildNum, name);
+                        buildName.setText(name);
+                        buildNameDialog.dismiss();
+                    }
+                });
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        buildNameDialog.dismiss();
+                    }
+                });
+
+                buildNameDialog = mBuilder.create();
+                buildNameDialog.show();
+            };
+        });
 
         starter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
@@ -254,6 +300,12 @@ public class FragmentPhysBuild extends Fragment {
         SharedPreferences.Editor edit = starterSP.edit();
         edit.putString(item, name);
         edit.apply();
+    }
+
+    public String getBuildName(String item) {
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String name = pref.getString(item, "Build " + buildNum);
+        return name;
     }
 
 }

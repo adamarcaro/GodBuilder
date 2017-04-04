@@ -14,6 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 
 public class GodDrawer extends AppCompatActivity {
@@ -22,7 +25,9 @@ public class GodDrawer extends AppCompatActivity {
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+    private AdView mAdView;
     Toolbar toolbar;
+
     public static ArrayList<God> gods = new ArrayList<God>();
 
     @Override
@@ -30,6 +35,7 @@ public class GodDrawer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_god_drawer);
         createGods();
+
         //Setup DrawerLayout and NavigationView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -39,6 +45,11 @@ public class GodDrawer extends AppCompatActivity {
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.setDrawerListener(toggle);
         toggle.syncState();
+
+        //Setup ad
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().setRequestAgent("android_studio:ad_template").build();
+        mAdView.loadAd(adRequest);
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view) ;
 

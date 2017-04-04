@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "939358964228",
+    "firebase_url": "https://godbuilder-db73b.firebaseio.com",
+    "project_id": "godbuilder-db73b",
+    "storage_bucket": "godbuilder-db73b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939358964228:android:e4b33145d488293c",
+        "android_client_info": {
+          "package_name": "com.adamtrudeauarcaro.godbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939358964228-kn381pc9lfi8qeme174c62evkie54mg1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adamtrudeauarcaro.godbuilder",
+            "certificate_hash": "9eae8dea535ba61248c162e578d9469907672e08"
+          }
+        },
+        {
+          "client_id": "939358964228-rf8cjstutohc87cu6pfm5qrc9lad3ole.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn8gEUGNBibD1EnOXr7fqS1701Cy95TWw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939358964228-rf8cjstutohc87cu6pfm5qrc9lad3ole.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
