@@ -3,7 +3,6 @@ package com.adamtrudeauarcaro.godbuilder;
 /**
  * Created by adama on 2017-03-13.
  */
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,21 +15,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
-public class TabFragmentMag extends Fragment {
+public class TabFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 3;
     String infoGodName;
     int infoGodImage, infoPantheonIcon;
+    char infoType;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         infoGodName = getArguments().getString("infoGodName", "agni");
         infoGodImage = getArguments().getInt("infoGodImage", R.drawable.agni);
         infoPantheonIcon = getArguments().getInt("infoPantheonIcon", R.drawable.icon_hindu);
+        infoType = getArguments().getChar("infoType", 'P');
 
         //Inflate tab_layout_agni and setup Views.
         View myView =  inflater.inflate(R.layout.tab_layout,null);
@@ -69,31 +67,34 @@ public class TabFragmentMag extends Fragment {
         {
             switch (position){
                 case 0 : {
-                    FragmentMagBuild myFragment = new FragmentMagBuild();
+                    BuildFragment myFragment = new BuildFragment();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
                     args.putString("buildNum", "1");
+                    args.putChar("infoType", infoType);
                     myFragment.setArguments(args);
 
                     return myFragment;
                 }
                 case 1 : {
-                    FragmentMagBuild myFragment = new FragmentMagBuild();
+                    BuildFragment myFragment = new BuildFragment();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
                     args.putString("buildNum", "2");
+                    args.putChar("infoType", infoType);
                     myFragment.setArguments(args);
 
                     return myFragment;
                 }
                 case 2 : {
-                    FragmentMagBuild myFragment = new FragmentMagBuild();
+                    BuildFragment myFragment = new BuildFragment();
 
                     Bundle args = new Bundle();
                     args.putString("infoGodName", infoGodName);
                     args.putString("buildNum", "3");
+                    args.putChar("infoType", infoType);
                     myFragment.setArguments(args);
 
                     return myFragment;
