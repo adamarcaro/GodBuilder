@@ -1,51 +1,88 @@
 package com.adamtrudeauarcaro.godbuilder;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.boots;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.itemsMag;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.itemsMagCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.itemsPhys;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.itemsPhysCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.relics;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.shoes;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.starterMag;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.starterMagCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.starterPhys;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.starterPhysCommon;
 
-public class ItemPhysStarterFragment extends DialogFragment {
+
+public class ItemFragment extends DialogFragment {
 
     Button btn;
     ListView lv;
     SearchView sv;
-    String[] names={"No starter", "Bumba's Mask", "Rangda's Mask", "Bluestone Pendant", "Death's Toll",
-                    "Mark of the Vanguard", "Swift Wing", "War Flag", "Watcher's Gift"};
-    int[] images={R.drawable.no_starter, R.drawable.bumbas_mask, R.drawable.rangdas_mask, R.drawable.bluestone_pendant, R.drawable.deaths_toll,
-                    R.drawable.mark_of_the_vanguard, R.drawable.swift_wing, R.drawable.war_flag, R.drawable.watchers_gift};
+    ArrayList<Item> items = new ArrayList<Item>();
+    char infoType, itemGroup;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Indicate layout for dialog
         View myView=inflater.inflate(R.layout.item_list, null);
 
-        //Set dialog title
+        infoType = getArguments().getChar("infoType", 'M');
+        itemGroup = getArguments().getChar("itemGroup", 'I');
+
+        if(itemGroup == 'I') {
+            if (infoType == 'R') {
+                items.addAll(itemsPhysCommon);
+            } else if (infoType == 'M') {
+                items.addAll(shoes);
+                items.addAll(itemsMagCommon);
+            } else {
+                items.addAll(boots);
+                items.addAll(itemsPhysCommon);
+            }
+        } else if(itemGroup == 'S') {
+            if(infoType == 'M') {
+                items.addAll(starterMagCommon);
+            } else {
+                items.addAll(starterPhysCommon);
+            }
+        } else if(itemGroup == 'R') {
+            items.addAll(relics);
+        }
+
         getDialog().setTitle("Starter Items");
+
 
         //Defining searchview, listview, button
         SearchView sv=(SearchView) myView.findViewById(R.id.searchView1);
         ListView lv=(ListView) myView.findViewById(R.id.listView1);
+        LinearLayout remove = (LinearLayout) myView.findViewById(R.id.removeLayout);
         Button btn=(Button) myView.findViewById(R.id.dismiss);
 
         //Initialize and set adapter for items
-        final Adapter adapter = new Adapter(getActivity(), this.getItems());
+        final Adapter adapter = new Adapter(getActivity(), items);
         lv.setAdapter(adapter);
 
         //Searchview functionality
-        sv.setQueryHint("Search starter items..");
+        sv.setQueryHint("Search...");
         sv.setOnQueryTextListener(new OnQueryTextListener() {
             public boolean onQueryTextSubmit(String txt) {
                 return false;
@@ -69,6 +106,16 @@ public class ItemPhysStarterFragment extends DialogFragment {
             }
         });
 
+        remove.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                String name = "";
+                int image_id = R.drawable.no_item;
+                String image_name = "no_item";
+                mListener.onListItemClick(name, image_name, image_id);
+                dismiss();
+            }
+        });
+
         //Cancel button
         btn.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
@@ -80,24 +127,14 @@ public class ItemPhysStarterFragment extends DialogFragment {
     }
 
     //Fragment contstructor
-    public static ItemPhysStarterFragment newInstance()
+    public static ItemFragment newInstance(char infoType, char itemGroup)
     {
-        ItemPhysStarterFragment f = new ItemPhysStarterFragment();
+        ItemFragment f = new ItemFragment();
+        Bundle args = new Bundle();
+        args.putChar("infoType", infoType);
+        args.putChar("itemGroup", itemGroup);
+        f.setArguments(args);
         return f;
-    }
-
-    //Populates list with items
-    private ArrayList<Item> getItems()
-    {
-        ArrayList<Item> items = new ArrayList<Item>();
-        Item item;
-
-        for(int i = 0; i < names.length; i++) {
-            item = new Item(names[i], images[i]);
-            items.add(item);
-        }
-
-        return items;
     }
 
     //Setting listener to connect list to God fragment

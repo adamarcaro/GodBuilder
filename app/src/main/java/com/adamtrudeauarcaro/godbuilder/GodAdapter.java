@@ -61,7 +61,7 @@ public class GodAdapter extends BaseAdapter implements Filterable {
         name.setText(gods.get(position).getName());
         image.setImageResource(gods.get(position).getImage());
         pantheon.setImageResource(gods.get(position).getPantheonIcon());
-        type.setImageResource(gods.get(position).getTypeIcon());
+        type.setImageResource(gods.get(position).getClassIcon());
 
         return convertView;
     }
@@ -90,9 +90,10 @@ public class GodAdapter extends BaseAdapter implements Filterable {
                 {
                     if(filterList.get(i).getName().toUpperCase().contains(constraint))
                     {
-                        God god = new God(filterList.get(i).getName(), filterList.get(i).getImage(),
-                                filterList.get(i).getPantheon(), filterList.get(i).getPantheonIcon(),
-                                filterList.get(i).getType(), filterList.get(i).getTypeIcon());
+                        God god = new God(filterList.get(i).getName(), filterList.get(i).getTitle(), filterList.get(i).getNameString(), filterList.get(i).getImage(),
+                                filterList.get(i).getPantheon(), filterList.get(i).getPantheonIcon(), filterList.get(i).getClassName(), filterList.get(i).getClassIcon(), filterList.get(i).getType(),
+                                filterList.get(i).getHealth(), filterList.get(i).getMana(), filterList.get(i).getDamage(), filterList.get(i).getProtPhys(), filterList.get(i).getProtMag(), filterList.get(i).getSpeed(),
+                                filterList.get(i).getHp5(), filterList.get(i).getMp5(), filterList.get(i).getAttackSpeed());
                         filters.add(god);
                     }
                 }

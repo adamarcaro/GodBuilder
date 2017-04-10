@@ -2,22 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/klazzik_grey">
 
     <SearchView
         android:id="@+id/searchView1"
         android:layout_width="match_parent"
-        android:layout_height="58dp" />
-
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="#DDD"/>
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="0dp"
+        android:layout_weight="72"
+        android:divider="@color/holoBlue"
+        android:dividerHeight="0.5dp"/>
+    <LinearLayout
+        android:id="@+id/removeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:padding="8dp"
+        android:background="@color/almost_black">
+        <ImageView
+            android:id="@+id/removeImage"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="15"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/garbage"/>
+        <TextView
+            android:id="@+id/removeItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="85"
+            android:textColor="#DDD"
+            android:text="Remove Item"
+            android:textSize="16dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/dismiss"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:text="Cancel" />
 
 </LinearLayout>

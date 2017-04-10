@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#DDD">
+
+    <TextView
+        android:id="@+id/note"
+        android:gravity="center"
+        android:text="Build stats are calculated at level 20.\nStarter item not included in calculation."
+        android:textColor="@color/holoBlue"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:textSize="10dp"
+        android:background="@color/material_blue_grey_800"/>
+
+    <TextView
+        android:id="@+id/cost_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:textSize="16sp"
+        android:background="#DDD"
+        android:textColor="@color/almost_black"
+        android:padding="5dp"/>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="49"
+        android:divider="@color/holoBlue"
+        android:dividerHeight="0.5dp"/>
+
+    <ListView
+        android:id="@+id/listViewPassives"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"/>
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="Close" />
+
+</LinearLayout>

@@ -21,12 +21,13 @@
         android:layout_toRightOf="@+id/god_image"
         android:padding="10dp"
         android:text="TextView"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="#DDD"/>
 
     <ImageView
         android:id="@+id/type"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="31dp"
+        android:layout_height="31dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="right"

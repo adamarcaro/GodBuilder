@@ -1,6 +1,8 @@
 package com.adamtrudeauarcaro.godbuilder;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,6 @@ public class Adapter extends BaseAdapter implements Filterable {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if(convertView == null)
@@ -84,7 +85,13 @@ public class Adapter extends BaseAdapter implements Filterable {
                 {
                     if(filterList.get(i).getName().toUpperCase().contains(constraint))
                     {
-                        Item item = new Item(filterList.get(i).getName(), filterList.get(i).getImage());
+                        Item item = new Item(filterList.get(i).getName(), filterList.get(i).getImage(), filterList.get(i).getCost(), filterList.get(i).getItemType(), filterList.get(i).getItemGroup(),
+                                filterList.get(i).getHealth(), filterList.get(i).getMana(), filterList.get(i).getHp5(), filterList.get(i).getMp5(),
+                                filterList.get(i).getDamage(), filterList.get(i).getLifesteal(), filterList.get(i).getPenetration(),
+                                filterList.get(i).getProtPhys(), filterList.get(i).getProtMag(),
+                                filterList.get(i).getAttackSpeed(), filterList.get(i).getSpeed(),
+                                filterList.get(i).getCritChance(), filterList.get(i).getCdr(), filterList.get(i).getCcr(),
+                                filterList.get(i).getPassive());
                         filters.add(item);
                     }
                 }
