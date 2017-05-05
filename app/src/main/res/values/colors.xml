@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#1762A1</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark">#111111</color>
     <color name="colorAccent">#FF4081</color>
     <color name="almost_black">#222222</color>
     <color name="black">#000</color>
@@ -10,6 +10,7 @@
     <color name="holoBlue">#00ddff</color>
     <color name="klazzik_grey">#222</color>
     <color name="material_blue_grey_800">#222</color> //header colour
+    <color name="smooth_red">#dd4b39</color>
 
     <color name="godName">#FFF</color>
     <color name="godTitle">#DDD</color>

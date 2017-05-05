@@ -9,28 +9,28 @@
     <TextView
         android:id="@+id/note"
         android:gravity="center"
-        android:text="Build stats are calculated at level 20.\nStarter item not included in calculation."
+        android:text="Build stats are calculated at level 20. \nStarter item not included in calculation."
         android:textColor="@color/holoBlue"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="7"
         android:textSize="10dp"
-        android:background="@color/material_blue_grey_800"/>
+        android:background="@color/klazzik_grey"/>
 
     <TextView
         android:id="@+id/cost_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_weight="5"
         android:textSize="16sp"
         android:background="#DDD"
-        android:textColor="@color/almost_black"
-        android:padding="5dp"/>
+        android:gravity="center"
+        android:textColor="@color/almost_black"/>
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="49"
+        android:layout_weight="50"
         android:divider="@color/holoBlue"
         android:dividerHeight="0.5dp"/>
 
@@ -38,7 +38,7 @@
         android:id="@+id/listViewPassives"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="25"/>
+        android:layout_weight="28" />
 
     <Button
         android:id="@+id/close"

@@ -23,6 +23,7 @@ public class God {
 
     private int health, mana, damage, protMag, protPhys;
     private double hp5, mp5, attackSpeed, speed;
+    private Boolean fav;
 
     public God(String name, String title, String nameString, int image, String pantheon, int pantheonIcon, String className, int classIcon, char type,
                int health, int mana, int damage, int protPhys, int protMag, double speed,
@@ -49,6 +50,8 @@ public class God {
         this.hp5 = hp5;
         this.mp5 = mp5;
         this.attackSpeed = attackSpeed;
+
+        this.fav = false;
     }
 
     public String getName() {
@@ -193,5 +196,13 @@ public class God {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Boolean getFav() {
+        return fav;
+    }
+
+    public void setFav(Boolean fav) {
+        this.fav = fav;
     }
 }

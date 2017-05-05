@@ -7,10 +7,12 @@ package com.adamtrudeauarcaro.godbuilder;
 public class Stat {
 
     private String statLabel, statValue;
+    private Boolean capped;
 
-    public Stat(String statLabel, String statValue) {
+    public Stat(String statLabel, String statValue, Boolean capped) {
         this.statLabel = statLabel;
         this.statValue = statValue;
+        this.capped = capped;
     }
 
     public String getStatLabel() {
@@ -27,5 +29,13 @@ public class Stat {
 
     public void setStatValue(String statValue) {
         this.statValue = statValue;
+    }
+
+    public Boolean getCapped() {
+        return capped;
+    }
+
+    public void setCapped(Boolean capped) {
+        this.capped = capped;
     }
 }

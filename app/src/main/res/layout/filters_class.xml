@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:padding="10dp">
+    <ToggleButton
+        android:id="@+id/mage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/toggle_mage"
+        android:textOn=""
+        android:textOff=""
+        android:text="" />
+    <ToggleButton
+        android:id="@+id/assassin"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/mage"
+        android:background="@drawable/toggle_assassin"
+        android:textOn=""
+        android:textOff=""
+        android:text="" />
+    <ToggleButton
+        android:id="@+id/warrior"
+        android:layout_width="20dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/assassin"
+        android:background="@drawable/toggle_warrior"
+        android:textOn=""
+        android:textOff=""
+        android:text="" />
+    <ToggleButton
+        android:id="@+id/guardian"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/mage"
+        android:background="@drawable/toggle_guardian"
+        android:textOn=""
+        android:textOff=""
+        android:text="" />
+    <ToggleButton
+        android:id="@+id/hunter"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/guardian"
+        android:background="@drawable/toggle_hunter"
+        android:textOn=""
+        android:textOff=""
+        android:text="" />
+</RelativeLayout>

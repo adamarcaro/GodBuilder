@@ -21,17 +21,30 @@
             android:src="@drawable/icon_stats"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="8dp" />
+
+        <!--
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/abilitiesButton"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_abilities"
+            android:layout_toRightOf="@+id/statsButton"
+            android:layout_marginLeft="8dp" />
+            -->
+
         <TextView
+            android:id="@+id/buildName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/buildName"
-            android:text="Build"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textColor="@color/almost_black"
-            android:textSize="18sp"
+            android:maxLength="24"
             android:maxLines="1"
-            android:maxLength="30" />
+            android:minWidth="50dp"
+            android:text="Build"
+            android:textColor="@color/almost_black"
+            android:textSize="18sp" />
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"

@@ -1,6 +1,8 @@
 package com.adamtrudeauarcaro.godbuilder;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ public class StatAdapter extends BaseAdapter {
 
     Context c;
     ArrayList<Stat> stats;
+    TextView statLabel, statValue;
 
     public StatAdapter(Context c, ArrayList<Stat> stats) {
         this.c = c;
@@ -47,12 +50,16 @@ public class StatAdapter extends BaseAdapter {
         if(convertView == null)
             convertView = inflater.inflate(R.layout.stat_entry, null);
 
-        TextView statLabel = (TextView) convertView.findViewById(R.id.statLabel);
-        TextView statValue = (TextView) convertView.findViewById(R.id.statValue);
+        statLabel = (TextView) convertView.findViewById(R.id.statLabel);
+        statValue = (TextView) convertView.findViewById(R.id.statValue);
 
         statLabel.setText(stats.get(position).getStatLabel());
         statValue.setText(stats.get(position).getStatValue());
 
+        if(stats.get(position).getCapped())
+            statValue.setTextColor(ContextCompat.getColor(c, R.color.smooth_red));
+        else if(!stats.get(position).getCapped())
+            statValue.setTextColor(ContextCompat.getColor(c, R.color.holoBlue));
         return convertView;
     }
 

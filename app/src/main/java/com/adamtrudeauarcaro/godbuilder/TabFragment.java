@@ -3,6 +3,8 @@ package com.adamtrudeauarcaro.godbuilder;
 /**
  * Created by adama on 2017-03-13.
  */
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,13 +15,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.favGods;
 
 public class TabFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3;
+    public static int int_items = 5;
     God god;
     String infoGodName, infoGodTitle, infoGodNameString, infoPantheon, infoClass;
     int infoGodImage, infoPantheonIcon, infoClassIcon, infoHealth, infoMana, infoDamage, infoProtPhys, infoProtMag;
@@ -56,6 +64,43 @@ public class TabFragment extends Fragment {
             }
         });
 
+        RelativeLayout favStarContainer = (RelativeLayout) myView.findViewById(R.id.fav_star_container);
+        final ImageView favStar = (ImageView) myView.findViewById(R.id.fav_star);
+        final SharedPreferences pref = getActivity().getPreferences(getContext().MODE_PRIVATE);
+
+        Boolean isFav = pref.getBoolean(god.getNameString()+"_fav", false);
+
+        god.setFav(isFav);
+
+        if(isFav)
+            favStar.setImageResource(R.drawable.bolt_filled);
+        else
+            favStar.setImageResource(R.drawable.bolt_empty);
+
+        favStarContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(god.getFav())
+                {
+                    god.setFav(false);
+                    favGods = removeGodFromList(favGods);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean(god.getNameString() + "_fav", false);
+                    editor.apply();
+                    favStar.setImageResource(R.drawable.bolt_empty);
+                    Toast.makeText(getContext(), "Removed " + god.getName() + " from favorites", Toast.LENGTH_SHORT).show();
+                } else {
+                    god.setFav(true);
+                    favGods.add(god);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean(god.getNameString() + "_fav", true);
+                    editor.apply();
+                    favStar.setImageResource(R.drawable.bolt_filled);
+                    Toast.makeText(getContext(), "Added " + god.getName() + " to favorites", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         return myView;
 
     }
@@ -85,6 +130,16 @@ public class TabFragment extends Fragment {
                     myFragment.setArguments(createGodBundle(god, "3"));
                     return myFragment;
                 }
+                case 3 : {
+                    BuildFragment myFragment = new BuildFragment();
+                    myFragment.setArguments(createGodBundle(god, "4"));
+                    return myFragment;
+                }
+                case 4 : {
+                    BuildFragment myFragment = new BuildFragment();
+                    myFragment.setArguments(createGodBundle(god, "5"));
+                    return myFragment;
+                }
             }
             return null;
         }
@@ -96,9 +151,11 @@ public class TabFragment extends Fragment {
         //This method returns the title of the tab according to the position.
         public CharSequence getPageTitle(int position) {
             switch (position){
-                case 0 : return "Build 1";
-                case 1 : return "Build 2";
-                case 2 : return "Build 3";
+                case 0 : return "I";
+                case 1 : return "II";
+                case 2 : return "III";
+                case 3 : return "IV";
+                case 4 : return "V";
             }
             return null;
         }
@@ -174,6 +231,13 @@ public class TabFragment extends Fragment {
         args.putString("infoBuildNumber", infoBuildNumber);
 
         return args;
+    }
+
+    public ArrayList<God> removeGodFromList(ArrayList<God> list) {
+        for(int i = 0; i < list.size(); i++)
+            if(list.get(i).getName().equals(god.getName()))
+                list.remove(i);
+        return list;
     }
 
 }

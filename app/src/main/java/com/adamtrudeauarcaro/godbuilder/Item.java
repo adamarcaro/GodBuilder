@@ -11,6 +11,7 @@ public class Item {
     private char itemType, itemGroup;
     private int health, mana, damage, protPhys, protMag, critChance, penetration, lifesteal, cdr, ccr;
     private double hp5, mp5, attackSpeed, speed;
+    private int maxStacks;
 
     public Item()
     {
@@ -40,6 +41,8 @@ public class Item {
         this.ccr = 0;
 
         this.passive = "";
+
+        this.maxStacks = 0;
     }
 
     public Item(String header, String note)
@@ -70,6 +73,8 @@ public class Item {
         this.ccr = 0;
 
         this.passive = note;
+
+        this.maxStacks = 0;
     }
 
     public Item(String name, int image, int cost, char itemType, char itemGroup,
@@ -105,6 +110,8 @@ public class Item {
         this.ccr = ccr;
 
         this.passive = passive;
+
+        this.maxStacks = 0;
     }
 
     public String getName() {
@@ -270,4 +277,13 @@ public class Item {
     public String toString() {
         return name;
     }
+
+    public int getMaxStacks() {
+        return maxStacks;
+    }
+
+    public void setMaxStacks(int maxStacks) {
+        this.maxStacks = maxStacks;
+    }
+
 }

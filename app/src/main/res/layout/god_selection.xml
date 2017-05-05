@@ -24,6 +24,26 @@
         android:textSize="16sp"
         android:textColor="#DDD"/>
 
+    <!--
+    <RelativeLayout
+        android:id="@+id/fav_star_container"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/type">
+        <ImageView
+            android:id="@+id/fav_star"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/icon_star_empty"
+            android:textOn=""
+            android:textOff=""
+            android:text=""/>
+    </RelativeLayout>
+    -->
+
     <ImageView
         android:id="@+id/type"
         android:layout_width="31dp"
