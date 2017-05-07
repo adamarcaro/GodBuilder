@@ -32,52 +32,101 @@ import static com.adamtrudeauarcaro.godbuilder.GodDrawer.pantheonNames;
 
 public class FavFragment extends Fragment {
 
-    ListView lv;
-    SearchView sv;
     GodAdapter adapter;
-    RelativeLayout flipClass, flipPantheon, arrowRight, arrowLeft;
-    ToggleButton mage, assassin, warrior, guardian, hunter;
-    ToggleButton norse, roman, egyptian, hindu, celtic, chinese, mayan, japanese, greek;
     ArrayList<ToggleButton> classes = new ArrayList<ToggleButton>();
     ArrayList<ToggleButton> pantheons = new ArrayList<ToggleButton>();
-    ViewPager filtersSection;
     View view;
     FiltersViewAdapter filterAdapter;
 
+    static class ViewHolder {
+        private ListView lv;
+        private SearchView sv;
+        private ViewPager filtersSection;
+        private RelativeLayout flipClass, flipPantheon, arrowRight, arrowLeft;
+        private ToggleButton mage, assassin, warrior, guardian, hunter;
+        private ToggleButton norse, roman, egyptian, hindu, celtic, chinese, mayan, japanese, greek;
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final ViewHolder holder;
         if(view == null)
+        {
             view = inflater.inflate(R.layout.home, null);
+            holder = new ViewHolder();
+            holder.lv = (ListView) view.findViewById(R.id.home_list);
+            holder.sv = (SearchView) view.findViewById(R.id.home_search);
+            holder.filtersSection = (ViewPager) view.findViewById(R.id.myfivepanelpager);
+
+            holder.flipClass = (RelativeLayout) view.findViewById(R.id.flip_class);
+            holder.flipPantheon = (RelativeLayout) view.findViewById(R.id.flip_pantheon);
+            holder.arrowRight = (RelativeLayout) view.findViewById(R.id.arrow_right);
+            holder.arrowLeft = (RelativeLayout) view.findViewById(R.id.arrow_left);
+
+            holder.mage = (ToggleButton) view.findViewById(R.id.mage);
+            holder.assassin = (ToggleButton) view.findViewById(R.id.assassin);
+            holder.warrior = (ToggleButton) view.findViewById(R.id.warrior);
+            holder.guardian = (ToggleButton) view.findViewById(R.id.guardian);
+            holder.hunter = (ToggleButton) view.findViewById(R.id.hunter);
+            holder.norse = (ToggleButton) view.findViewById(R.id.norse);
+            holder.roman = (ToggleButton) view.findViewById(R.id.roman);
+            holder.egyptian = (ToggleButton) view.findViewById(R.id.egyptian);
+            holder.hindu = (ToggleButton) view.findViewById(R.id.hindu);
+            holder.celtic = (ToggleButton) view.findViewById(R.id.celtic);
+            holder.chinese= (ToggleButton) view.findViewById(R.id.chinese);
+            holder.mayan = (ToggleButton) view.findViewById(R.id.mayan);
+            holder.japanese = (ToggleButton) view.findViewById(R.id.japanese);
+            holder.greek = (ToggleButton) view.findViewById(R.id.greek);
+
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Favorites");
-        instantiateViews();
-        populateLists();
+
+        classes.add(holder.mage);
+        classes.add(holder.warrior);
+        classes.add(holder.guardian);
+        classes.add(holder.hunter);
+        classes.add(holder.assassin);
+
+        pantheons.add(holder.norse);
+        pantheons.add(holder.mayan);
+        pantheons.add(holder.roman);
+        pantheons.add(holder.celtic);
+        pantheons.add(holder.japanese);
+        pantheons.add(holder.chinese);
+        pantheons.add(holder.egyptian);
+        pantheons.add(holder.hindu);
+        pantheons.add(holder.greek);
 
         RelativeLayout appNameContainer = (RelativeLayout) view.findViewById(R.id.app_name_container);
         appNameContainer.setVisibility(View.GONE);
 
-        sv.setQueryHint(getString(R.string.search_gods));
+        holder.sv.setQueryHint(getString(R.string.search_gods));
 
-        filtersSection.setAdapter(new FiltersViewAdapter());
+        holder.filtersSection.setAdapter(new FiltersViewAdapter());
         favGods = sortItemsByName(favGods);
         adapter = new GodAdapter(getActivity(), favGods);
 
         if (favGods.size() > 0)
         {
-            lv.setAdapter(adapter);
+            holder.lv.setAdapter(adapter);
         }
 
-        arrowRight.setOnClickListener(new View.OnClickListener() {
+        holder.arrowRight.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                filtersSection.setCurrentItem(1, true);
+                holder.filtersSection.setCurrentItem(1, true);
             }
         });
 
-        arrowLeft.setOnClickListener(new View.OnClickListener() {
+        holder.arrowLeft.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                filtersSection.setCurrentItem(0, true);
+                holder.filtersSection.setCurrentItem(0, true);
             }
         });
 
-        flipClass.setOnClickListener(new View.OnClickListener() {
+        holder.flipClass.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int checked = 0;
                 int unchecked = 0;
@@ -86,12 +135,12 @@ public class FavFragment extends Fragment {
 
                 if(checked > unchecked)
                 {
-                    adapter.getFilter().filter(sv.getQuery());
+                    adapter.getFilter().filter(holder.sv.getQuery());
                     adapter.removeAllClasses();
                     for(int i = 0; i < classes.size(); i++)
                         classes.get(i).setChecked(false);
                 } else {
-                    adapter.getFilter().filter(sv.getQuery());
+                    adapter.getFilter().filter(holder.sv.getQuery());
                     adapter.addAllClasses();
                     for(int i = 0; i < classes.size(); i++)
                         classes.get(i).setChecked(true);
@@ -99,7 +148,7 @@ public class FavFragment extends Fragment {
             }
         });
 
-        flipPantheon.setOnClickListener(new View.OnClickListener() {
+        holder.flipPantheon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int checked = 0;
                 int unchecked = 0;
@@ -109,12 +158,12 @@ public class FavFragment extends Fragment {
                 if(checked > unchecked)
                 {
                     adapter.removeAllPantheons();
-                    adapter.getFilter().filter(sv.getQuery());
+                    adapter.getFilter().filter(holder.sv.getQuery());
                     for(int i = 0; i < pantheons.size(); i++)
                         pantheons.get(i).setChecked(false);
                 } else {
                     adapter.addAllPantheons();
-                    adapter.getFilter().filter(sv.getQuery());
+                    adapter.getFilter().filter(holder.sv.getQuery());
                     for(int i = 0; i < pantheons.size(); i++)
                         pantheons.get(i).setChecked(true);
                 }
@@ -129,21 +178,21 @@ public class FavFragment extends Fragment {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
                         adapter.addClass(classNames.get(position));
-                        adapter.getFilter().filter(sv.getQuery());
+                        adapter.getFilter().filter(holder.sv.getQuery());
                     }
                     else {
                         adapter.removeClass(classNames.get(position));
-                        adapter.getFilter().filter(sv.getQuery());
+                        adapter.getFilter().filter(holder.sv.getQuery());
                     }
                 }
             });
 
             if(classes.get(i).isChecked()) {
                 adapter.addClass(classNames.get(position));
-                adapter.getFilter().filter(sv.getQuery());
+                adapter.getFilter().filter(holder.sv.getQuery());
             } else {
                 adapter.removeClass(classNames.get(position));
-                adapter.getFilter().filter(sv.getQuery());
+                adapter.getFilter().filter(holder.sv.getQuery());
             }
         }
 
@@ -154,25 +203,25 @@ public class FavFragment extends Fragment {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
                         adapter.addPantheon(pantheonNames.get(position));
-                        adapter.getFilter().filter(sv.getQuery());
+                        adapter.getFilter().filter(holder.sv.getQuery());
                     }
                     else {
                         adapter.removePantheon(pantheonNames.get(position));
-                        adapter.getFilter().filter(sv.getQuery());
+                        adapter.getFilter().filter(holder.sv.getQuery());
                     }
                 }
             });
 
             if(pantheons.get(i).isChecked()) {
                 adapter.addPantheon(pantheonNames.get(i));
-                adapter.getFilter().filter(sv.getQuery());
+                adapter.getFilter().filter(holder.sv.getQuery());
             } else {
                 adapter.removePantheon(pantheonNames.get(i));
-                adapter.getFilter().filter(sv.getQuery());
+                adapter.getFilter().filter(holder.sv.getQuery());
             }
         }
 
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        holder.sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
@@ -182,7 +231,7 @@ public class FavFragment extends Fragment {
             }
         });
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        holder.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 String name = adapter.getItem(position).getName();
 
@@ -272,50 +321,6 @@ public class FavFragment extends Fragment {
             return arg0 == arg1; // return true if both are equal.
         }
 
-    }
-
-    public void instantiateViews() {
-        lv = (ListView) view.findViewById(R.id.home_list);
-        sv = (SearchView) view.findViewById(R.id.home_search);
-        filtersSection = (ViewPager) view.findViewById(R.id.myfivepanelpager);
-
-        flipClass = (RelativeLayout) view.findViewById(R.id.flip_class);
-        flipPantheon = (RelativeLayout) view.findViewById(R.id.flip_pantheon);
-        arrowRight = (RelativeLayout) view.findViewById(R.id.arrow_right);
-        arrowLeft = (RelativeLayout) view.findViewById(R.id.arrow_left);
-
-        mage = (ToggleButton) view.findViewById(R.id.mage);
-        assassin = (ToggleButton) view.findViewById(R.id.assassin);
-        warrior = (ToggleButton) view.findViewById(R.id.warrior);
-        guardian = (ToggleButton) view.findViewById(R.id.guardian);
-        hunter = (ToggleButton) view.findViewById(R.id.hunter);
-        norse = (ToggleButton) view.findViewById(R.id.norse);
-        roman = (ToggleButton) view.findViewById(R.id.roman);
-        egyptian = (ToggleButton) view.findViewById(R.id.egyptian);
-        hindu = (ToggleButton) view.findViewById(R.id.hindu);
-        celtic = (ToggleButton) view.findViewById(R.id.celtic);
-        chinese= (ToggleButton) view.findViewById(R.id.chinese);
-        mayan = (ToggleButton) view.findViewById(R.id.mayan);
-        japanese = (ToggleButton) view.findViewById(R.id.japanese);
-        greek = (ToggleButton) view.findViewById(R.id.greek);
-    }
-
-    public void populateLists(){
-        classes.add(mage);
-        classes.add(warrior);
-        classes.add(guardian);
-        classes.add(hunter);
-        classes.add(assassin);
-
-        pantheons.add(norse);
-        pantheons.add(mayan);
-        pantheons.add(roman);
-        pantheons.add(celtic);
-        pantheons.add(japanese);
-        pantheons.add(chinese);
-        pantheons.add(egyptian);
-        pantheons.add(hindu);
-        pantheons.add(greek);
     }
 
     public ArrayList<God> sortItemsByName(ArrayList<God> list) {
