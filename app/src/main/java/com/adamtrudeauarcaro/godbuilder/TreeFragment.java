@@ -42,10 +42,17 @@ import static com.adamtrudeauarcaro.godbuilder.GodDrawer.soulReliquary;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.spikedGauntlet;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.talisman;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.tinyTrinket;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesMag;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesMagCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesPhys;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesPhysCommon;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesRat;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.treesRatCommon;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.uncommonSash;
 
 
-public class TreeFragment extends DialogFragment implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
+public class TreeFragment extends DialogFragment implements SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     char infoType, itemGroup;
 
@@ -60,7 +67,8 @@ public class TreeFragment extends DialogFragment implements SearchView.OnQueryTe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Indicate layout for dialog
-        view=inflater.inflate(R.layout.item_list_trees, null);
+        if(view == null)
+            view=inflater.inflate(R.layout.item_list_trees, null);
 
         //Defining searchview, listview, button
         search = (SearchView) view.findViewById(R.id.search);
@@ -130,83 +138,25 @@ public class TreeFragment extends DialogFragment implements SearchView.OnQueryTe
     }
 
     private void loadSomeData() {
-            //Common
-            ItemTree ancientBladeTree = new ItemTree(R.drawable.ancient_blade, "Ancient Blade Tree", ancientBlade);
-            treeList.add(ancientBladeTree);
-            ItemTree breastplateTree = new ItemTree(R.drawable.breastplate, "Breastplate Tree", breastplate);
-            treeList.add(breastplateTree);
-            ItemTree cloakTree = new ItemTree(R.drawable.cloak, "Cloak Tree", cloak);
-            treeList.add(cloakTree);
-            ItemTree enchantedKusariTree = new ItemTree(R.drawable.enchanted_kusari, "Enchanted Kusari Tree", enchantedKusari);
-            treeList.add(enchantedKusariTree);
-            ItemTree glowingEmeraldTree = new ItemTree(R.drawable.glowing_emerald, "Glowing Emerald Tree", glowingEmerald);
-            treeList.add(glowingEmeraldTree);
-            ItemTree ironMailTree = new ItemTree(R.drawable.iron_mail, "Iron Mail Tree", ironMail);
-            treeList.add(ironMailTree);
-            ItemTree talismanTree = new ItemTree(R.drawable.talisman, "Talisman Tree", talisman);
-            treeList.add(talismanTree);
-
             //Physical
             if (infoType == 'M') {
                 search.setQueryHint("Search magical items...");
-                ItemTree shoesTree = new ItemTree(R.drawable.shoes, "Shoes Tree", shoes);
-                treeList.add(shoesTree);
-                ItemTree druidStoneTree = new ItemTree(R.drawable.druid_stone, "Druid Stone Tree", druidStone);
-                treeList.add(druidStoneTree);
-                ItemTree emeraldRingTree = new ItemTree(R.drawable.emerald_ring, "Emerald Ring Tree", emeraldRing);
-                treeList.add(emeraldRingTree);
-                ItemTree imperialHelmetTree = new ItemTree(R.drawable.imperial_helmet, "Imperial Helmet Tree", imperialHelmet);
-                treeList.add(imperialHelmetTree);
-                ItemTree lostArtifactTree = new ItemTree(R.drawable.lost_artifact, "Lost Artifact Tree", lostArtifact);
-                treeList.add(lostArtifactTree);
-                ItemTree magicFocusTree = new ItemTree(R.drawable.magic_focus, "Magic Focus Tree", magicFocus);
-                treeList.add(magicFocusTree);
-                ItemTree soulReliquaryTree = new ItemTree(R.drawable.soul_reliquary, "Soul Reliquary Tree", soulReliquary);
-                treeList.add(soulReliquaryTree);
-                ItemTree tinyTrinketTree = new ItemTree(R.drawable.tiny_trinket, "Tiny Trinket Tree", tinyTrinket);
-                treeList.add(tinyTrinketTree);
-                ItemTree uncommonSashTree = new ItemTree(R.drawable.uncommon_sash, "Uncommon Sash Tree", uncommonSash);
-                treeList.add(uncommonSashTree);
-                treeList = sortTreesByName(treeList);
+                treeList = treesMagCommon;
             } else if (infoType == 'P' || infoType == 'R') {
                 search.setQueryHint("Search physical items...");
                 if (infoType == 'P') {
-                    ItemTree bootsTree = new ItemTree(R.drawable.boots, "Boots Tree", boots);
-                    treeList.add(bootsTree);
+                    treeList = treesPhysCommon;
+                } else {
+                    treeList = treesRatCommon;
                 }
-                ItemTree cudgelTree = new ItemTree(R.drawable.cudgel, "Cudgel Tree", cudgel);
-                treeList.add(cudgelTree);
-                ItemTree enchantedBucklerTree = new ItemTree(R.drawable.enchanted_buckler, "Enchanted Buckler Tree", enchantedBuckler);
-                treeList.add(enchantedBucklerTree);
-                ItemTree hiddenDaggerTree = new ItemTree(R.drawable.hidden_dagger, "Hidden Dagger Tree", hiddenDagger);
-                treeList.add(hiddenDaggerTree);
-                ItemTree katanaTree = new ItemTree(R.drawable.katana, "Katana Tree", katana);
-                treeList.add(katanaTree);
-                ItemTree lightBladeTree = new ItemTree(R.drawable.light_blade, "Light Blade Tree", lightBlade);
-                treeList.add(lightBladeTree);
-                ItemTree maceTree = new ItemTree(R.drawable.mace, "Mace Tree", mace);
-                treeList.add(maceTree);
-                ItemTree morningstarTree = new ItemTree(R.drawable.morningstar, "Morningstar Tree", morningstar);
-                treeList.add(morningstarTree);
-                ItemTree roundShieldTree = new ItemTree(R.drawable.round_shield, "Round Shield Tree", roundShield);
-                treeList.add(roundShieldTree);
-                ItemTree shortBowTree = new ItemTree(R.drawable.short_bow, "Short Bow Tree", shortBow);
-                treeList.add(shortBowTree);
-                ItemTree shurikenTree = new ItemTree(R.drawable.shuriken, "Shuriken Tree", shuriken);
-                treeList.add(shurikenTree);
-                ItemTree spikedGauntletTree = new ItemTree(R.drawable.spiked_gauntlet, "Spiked Gauntlet Tree", spikedGauntlet);
-                treeList.add(spikedGauntletTree);
-                treeList = sortTreesByName(treeList);
             }
     }
 
-    @Override
     public boolean onClose() {
         itemAdapter.filterData("");
         return false;
     }
 
-    @Override
     public boolean onQueryTextChange(String query) {
         if(query.equals("")) {
             collapseAll();
@@ -218,7 +168,6 @@ public class TreeFragment extends DialogFragment implements SearchView.OnQueryTe
         }
     }
 
-    @Override
     public boolean onQueryTextSubmit(String query) {
         itemAdapter.filterData(query);
         expandAll();
@@ -245,17 +194,6 @@ public class TreeFragment extends DialogFragment implements SearchView.OnQueryTe
 
     public void setOnChildClickListener(OnChildClickListener listener) {
         this.mListener = listener;
-    }
-
-    public ArrayList<ItemTree> sortTreesByName(ArrayList<ItemTree> list)
-    {
-        Collections.sort(list, new Comparator<ItemTree>() {
-            public int compare(final ItemTree object1, final ItemTree object2) {
-                return object1.getName().compareTo(object2.getName());
-            }
-        });
-
-        return list;
     }
 
 }

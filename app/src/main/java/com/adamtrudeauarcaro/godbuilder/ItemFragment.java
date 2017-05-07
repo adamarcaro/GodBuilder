@@ -26,16 +26,18 @@ public class ItemFragment extends DialogFragment {
     ListView lv;
     SearchView sv;
     ArrayList<Item> items = new ArrayList<Item>();
+    View view;
     char infoType, itemGroup;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Indicate layout for dialog
-        View myView = inflater.inflate(R.layout.item_list, null);
+        if(view == null)
+            view = inflater.inflate(R.layout.item_list, null);
         //Defining searchview, listview, button
-        SearchView sv = (SearchView) myView.findViewById(R.id.searchView1);
-        ListView lv = (ListView) myView.findViewById(R.id.listView1);
-        Button btn = (Button) myView.findViewById(R.id.dismiss);
+        sv = (SearchView) view.findViewById(R.id.searchView1);
+        lv = (ListView) view.findViewById(R.id.listView1);
+        btn = (Button) view.findViewById(R.id.dismiss);
 
         infoType = getArguments().getChar("infoType", 'M');
         itemGroup = getArguments().getChar("itemGroup", 'S');
@@ -89,7 +91,7 @@ public class ItemFragment extends DialogFragment {
             }
         });
 
-        return myView;
+        return view;
     }
 
     //Fragment contstructor

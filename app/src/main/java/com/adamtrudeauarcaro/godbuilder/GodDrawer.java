@@ -45,6 +45,7 @@ public class GodDrawer extends AppCompatActivity {
 
     public static ArrayList<Item> starterPhysCommon = new ArrayList<Item>();
     public static ArrayList<Item> starterMagCommon = new ArrayList<Item>();
+    public static ArrayList<Item> starters = new ArrayList<Item>();
 
     public static ArrayList<Item> itemsCommon = new ArrayList<Item>();
     public static ArrayList<Item> itemsPhys = new ArrayList<Item>();
@@ -87,13 +88,24 @@ public class GodDrawer extends AppCompatActivity {
     public static ArrayList<Item> tinyTrinket = new ArrayList<Item>();
     public static ArrayList<Item> uncommonSash = new ArrayList<Item>();
 
+    public static ArrayList<ItemTree> treesPhys = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> treesRat = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> treesMag = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> treesCommon = new ArrayList<ItemTree>();
+
+    public static ArrayList<ItemTree> treesPhysCommon = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> treesRatCommon = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> treesMagCommon = new ArrayList<ItemTree>();
+    public static ArrayList<ItemTree> trees = new ArrayList<ItemTree>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_god_drawer);
-
         populateNameLists();
         createGods();
         createItems();
+        createTrees();
+
         getFavs();
 
         instantiateViews();
@@ -102,7 +114,6 @@ public class GodDrawer extends AppCompatActivity {
         getDrawerListener();
 
         inflateHomeFragment();
-
         createAd();
     }
 
@@ -837,184 +848,183 @@ public class GodDrawer extends AppCompatActivity {
                 40, 40, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 10, 20,                        //Crit Chance, CDR, CCR
                 getString(R.string.spirit_robe_passive));
-        Item bulwarkOfHope = new Item("Bulwark of Hope", R.drawable.bulwark_of_hope, 2550, 'C', 'I',
+        Item bulwarkOfHope = new Item(getString(R.string.bulwark_of_hope_name), R.drawable.bulwark_of_hope, 2550, 'C', 'I',
                 200, 0, 0.0, 0.0, 0, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 60, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 20,                        //Crit Chance, CDR, CCR
-                "When you take damage and are below 30% Health, you gain a Shield with health equal to 150 +10 Per Player Level for 20s. Can only occur once every 60s.");
-        Item mysticalMail = new Item("Mystical Mail", R.drawable.mystical_mail, 2700, 'C', 'I',
+                getString(R.string.bulwark_of_hope_passive));
+        Item mysticalMail = new Item(getString(R.string.mystical_mail_name), R.drawable.mystical_mail, 2700, 'C', 'I',
                 300, 0, 0.0, 0.0, 0, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 40, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "All enemies within 25 units are dealt 40 Magical Damage per second.");
-        Item mantleOfDiscord = new Item("Mantle of Discord", R.drawable.mantle_of_discord, 2900, 'C', 'I',
+                getString(R.string.mystical_mail_passive));
+        Item mantleOfDiscord = new Item(getString(R.string.mantle_of_discord_name), R.drawable.mantle_of_discord, 2900, 'C', 'I',
                 0, 0, 0.0, 0.0, 0, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 60, 60, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 10, 0,                        //Crit Chance, CDR, CCR
-                "If you take damage below 30% health you unleash a shockwave that stuns all enemies within a range of 20 units for 1s and gain CC immunity for 1s. This effect cannot trigger more than once every 90s.");
+                getString(R.string.mantle_of_discord_passive));
 
         //Physical Items
-        Item reinforcedGreaves = new Item("Reinforced Greaves", R.drawable.reinforced_greaves, 1400, 'P', 'I',
+        Item reinforcedGreaves = new Item(getString(R.string.reinforced_greaves_name), R.drawable.reinforced_greaves, 1400, 'P', 'I',
                 75, 0, 0.0, 0.0, 10, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 18,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 20,                        //Crit Chance, CDR, CCR
-                "Every time you are damaged by a god you gain a stack that provides 3 Physical and Magical Protections. Stacks up to 6 times, Lasts 6s.");
-        Item talariaBoots = new Item("Talaria Boots", R.drawable.talaria_boots, 1400, 'P', 'I',
+                getString(R.string.reinforced_greaves_passive));
+        Item talariaBoots = new Item(getString(R.string.talaria_boots_name), R.drawable.talaria_boots, 1400, 'P', 'I',
                 0, 0, 0.0, 0.0, 15, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 18,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "You gain +14% additional Movement Speed and +25 HP5 while out of combat. Each time you damage an enemy god you earn +30 Gold. This cannot occur on the same god more than once every 90s.");
-        Item ninjaTabi = new Item("Ninja Tabi", R.drawable.ninja_tabi, 1500, 'P', 'I',
+                getString(R.string.talaria_boots_passive));
+        Item ninjaTabi = new Item(getString(R.string.ninja_tabi_name), R.drawable.ninja_tabi, 1500, 'P', 'I',
                 0, 100, 0.0, 0.0, 20, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.2, 18,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
                 null);
-        Item warriorTabi = new Item("Warrior Tabi", R.drawable.warrior_tabi, 1550, 'P', 'I',
+        Item warriorTabi = new Item(getString(R.string.warrior_tabi_name), R.drawable.warrior_tabi, 1550, 'P', 'I',
                 0, 0, 0.0, 0.0, 40, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 18,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
                 null);
-        Item ancile = new Item("Ancile", R.drawable.ancile, 2000, 'P', 'I',
+        Item ancile = new Item(getString(R.string.ancile_name), R.drawable.ancile, 2000, 'P', 'I',
                 0, 0, 0.0, 0.0, 25, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 60, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 10, 0,                        //Crit Chance, CDR, CCR
-                "Whenever you take Magical Damage from an enemy ability you unleash a shockwave that Silences all enemies within a range of 30 units for 1s. This effect cannot trigger more than once every 30s.");
-        Item runeforgedHammer = new Item("Runeforged Hammer", R.drawable.runeforged_hammer, 2000, 'P', 'I',
+                getString(R.string.ancile_passive));
+        Item runeforgedHammer = new Item(getString(R.string.runeforged_hammer_name), R.drawable.runeforged_hammer, 2000, 'P', 'I',
                 250, 0, 0.0, 0.0, 40, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Enemies take 15% Bonus damage from you if they are affected by Crowd Control. Does not include Knockbacks, Blinds, or Grabs.");
-        Item devourersGauntlet = new Item("Devourer's Gauntlet", R.drawable.devourers_gauntlet, 2050, 'P', 'I',
+                getString(R.string.runeforged_hammer_passive));
+        Item devourersGauntlet = new Item(getString(R.string.devourers_gauntlet_name), R.drawable.devourers_gauntlet, 2050, 'P', 'I',
                 0, 0, 0.0, 0.0, 25, 10, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "You permanently gain +.4 Physical Power and +.20% Physical Lifesteal per Stack, and receive 5 Stacks per god kill and 1 Stack per minion kill. (Max. 75 Stacks).");
-        Item odysseusBow = new Item("Odysseus' Bow", R.drawable.odysseus_bow, 2100, 'P', 'I',
+                getString(R.string.devourers_gauntlet_passive));
+        Item odysseusBow = new Item(getString(R.string.odysseus_bow_name), R.drawable.odysseus_bow, 2100, 'P', 'I',
                 0, 0, 0.0, 0.0, 0, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.4, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Every fourth Basic Attack triggers a chain lightning, damaging the target and up to 4 nearby enemies for 30 damage +50% of your total Basic Attack Power.");
-        Item hydrasLament = new Item("Hydra's Lament", R.drawable.hydras_lament, 2150, 'P', 'I',
+                getString(R.string.odysseus_bow_passive));
+        Item hydrasLament = new Item(getString(R.string.hydras_lament_name), R.drawable.hydras_lament, 2150, 'P', 'I',
                 0, 0, 0.0, 0.0, 40, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 10, 0,                        //Crit Chance, CDR, CCR
-                "For 8s after using an ability, your next Basic Attack will deal an additional 30% damage.\n" +
-                        "This item grants 2.5 MP5 per 10% of your missing Mana.");
-        Item runicShield = new Item("Runic Shield", R.drawable.runic_shield, 2150, 'P', 'I',
+                getString(R.string.hydras_lament_passive));
+        Item runicShield = new Item(getString(R.string.runic_shield_name), R.drawable.runic_shield, 2150, 'P', 'I',
                 100, 0, 0.0, 0.0, 35, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 50, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Enemy gods within 55 units have their Magical Power reduced by 50.");
-        Item brawlersBeatStick = new Item("Brawler's Beat Stick", R.drawable.brawlers_beat_stick, 2200, 'P', 'I',
+                getString(R.string.runic_shield_passive));
+        Item brawlersBeatStick = new Item(getString(R.string.brawlers_beat_stick_name), R.drawable.brawlers_beat_stick, 2200, 'P', 'I',
                 0, 0, 0.0, 0.0, 40, 0, 15,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Enemies hit by your Abilities have 40% reduced healing and regeneration for 8 seconds.");
-        Item rage = new Item("Rage", R.drawable.rage, 2400, 'P', 'I',
+                getString(R.string.brawlers_beat_stick_passive));
+        Item rage = new Item(getString(R.string.rage_name), R.drawable.rage, 2400, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 20, 0, 0,                        //Crit Chance, CDR, CCR
-                "Killing or getting an assist on an enemy god gives you 1 stack. Each stack provides 1% Critical Strike Chance. Stacks are permanent and stack up to 5 times. At 5 Stacks you gain an additional 10% Critical Strike Chance.");
-        Item soulEater = new Item("Soul Eater", R.drawable.soul_eater, 2200, 'P', 'I',
+                getString(R.string.rage_passive));
+        Item soulEater = new Item(getString(R.string.soul_eater_name), R.drawable.soul_eater, 2200, 'P', 'I',
                 0, 200, 0.0, 0.0, 0, 20, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 20,                        //Crit Chance, CDR, CCR
-                "Successfully hitting an Enemy god with a Basic Attack restores 2% of your maximum health per hit.");
-        Item theExecutioner = new Item("The Executioner", R.drawable.the_executioner, 2250, 'P', 'I',
+                getString(R.string.soul_eater_passive));
+        Item theExecutioner = new Item(getString(R.string.the_executioner_name), R.drawable.the_executioner, 2250, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.25, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Basic Attacks against an enemy reduce your target's Physical Protection by 12% for 3 seconds (max. 3 Stacks).");
-        Item blackthornHammer = new Item("Blackthorn Hammer", R.drawable.blackthorn_hammer, 2300, 'P', 'I',
+                getString(R.string.the_executioner_passive));
+        Item blackthornHammer = new Item(getString(R.string.blackthorn_hammer_name), R.drawable.blackthorn_hammer, 2300, 'P', 'I',
                 350, 200, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "If you are reduced to below 30% HP then 3s are substracted from all abilities currently on cooldown and all of your abilities cost 0 Mana to cast for the next 5s. This effect can only be activated once every 60s.");
-        Item frostboundHammer = new Item("Frostbound Hammer", R.drawable.frostbound_hammer, 2300, 'P', 'I',
+                getString(R.string.blackthorn_hammer_passive));
+        Item frostboundHammer = new Item(getString(R.string.frostbound_hammer_name), R.drawable.frostbound_hammer, 2300, 'P', 'I',
                 325, 0, 0.0, 0.0, 25, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Enemies hit by your Basic Attacks have their Movement Speed reduced by 30% and have their Attack Speed reduced 15% for 1.25 seconds.");
-        Item theCrusher = new Item("The Crusher", R.drawable.the_crusher, 2300, 'P', 'I',
+                getString(R.string.frostbound_hammer_passive));
+        Item theCrusher = new Item(getString(R.string.the_crusher_name), R.drawable.the_crusher, 2300, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 15,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.15, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Successfully hitting an enemy god with a basic attack will subtract 1s from all your abilities currently on cooldown. This effect can only occur once every 5s.");
-        Item titansBane = new Item("Titan's Bane", R.drawable.titans_bane, 2300, 'P', 'I',
+                getString(R.string.the_crusher_passive));
+        Item titansBane = new Item(getString(R.string.titans_bane_name), R.drawable.titans_bane, 2300, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "You gain +33% Physical Penetration.");
-        Item heartseeker = new Item("Heartseeker", R.drawable.heartseeker, 2400, 'P', 'I',
+                getString(R.string.titans_bane_passive));
+        Item heartseeker = new Item(getString(R.string.heartseeker_name), R.drawable.heartseeker, 2400, 'P', 'I',
                 0, 0, 0.0, 0.0, 25, 0, 10,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 10,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Every successful basic attack gives you 1 stack. At 5 stacks, your next ability deals bonus damage equal to 100% of your physical power to the first enemy god hit.");
-        Item poisonedStar = new Item("Poisoned Star", R.drawable.poisoned_star, 2400, 'P', 'I',
+                getString(R.string.heartseeker_passive));
+        Item poisonedStar = new Item(getString(R.string.poisoned_star_name), R.drawable.poisoned_star, 2400, 'P', 'I',
                 0, 0, 0.0, 0.0, 20, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.15, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 15, 0, 0,                        //Crit Chance, CDR, CCR
-                "Critical hits on enemy gods afflict them with poison for 2s. This poison slows them by 20% and reduces their damage output by 20%.");
-        Item shiftersShield = new Item("Shifter's Shield", R.drawable.shifters_shield, 2400, 'P', 'I',
+                getString(R.string.poisoned_star_passive));
+        Item shiftersShield = new Item(getString(R.string.shifters_shield_name), R.drawable.shifters_shield, 2400, 'P', 'I',
                 0, 0, 0.0, 0.0, 40, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 20, 20, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "While over 50% Health, you gain +20 Physical Power. While under 50% Health, you gain +20 Protections.");
-        Item jotunnsWrath = new Item("Jotunn's Wrath", R.drawable.jotunns_wrath, 2450, 'P', 'I',
+                getString(R.string.shifters_shield_passive));
+        Item jotunnsWrath = new Item(getString(R.string.jotunns_wrath_name), R.drawable.jotunns_wrath, 2450, 'P', 'I',
                 0, 150, 0.0, 0.0, 40, 0, 10,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 20, 0,                        //Crit Chance, CDR, CCR
                 null);
-        Item masamune = new Item("Masamune", R.drawable.masamune, 2500, 'P', 'I',
+        Item masamune = new Item(getString(R.string.masamune_name), R.drawable.masamune, 2500, 'P', 'I',
                 100, 0, 0.0, 0.0, 50, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 10,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "For each enemy god within 55 units of you, you gain a stacking buff that provides 7 Magical Protection and 7 Physical Protection. Stacks up to 5 times.");
-        Item stoneCuttingSword = new Item("Stone Cutting Sword", R.drawable.stone_cutting_sword, 2600, 'P', 'I',
+                getString(R.string.masamune_passive));
+        Item stoneCuttingSword = new Item(getString(R.string.stone_cutting_sword_name), R.drawable.stone_cutting_sword, 2600, 'P', 'I',
                 0, 0, 0.0, 0.0, 50, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 10,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Melee Basic Attacks decreases enemy Physical protections by 10, and increase your physical protection by 10 for 3s (max. 3 Stacks).");
-        Item transcendence = new Item("Transcendence", R.drawable.transcendence, 2600, 'P', 'I',
+                getString(R.string.stone_cutting_sword_passive));
+        Item transcendence = new Item(getString(R.string.transcendence_name), R.drawable.transcendence, 2600, 'P', 'I',
                 0, 300, 0.0, 6.0, 35, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "You permanently gain 15 Mana per Stack, and receive 5 Stacks for a god kill, and 1 Stack for a minion kill (max. 50 stacks). Additionally, 3% of your Mana is converted to Physical Power.");
-        Item qinsSais = new Item("Qin's Sais", R.drawable.qins_sais, 2700, 'P', 'I',
+                getString(R.string.transcendence_passive));
+        Item qinsSais = new Item(getString(R.string.qins_sais_name), R.drawable.qins_sais, 2700, 'P', 'I',
                 0, 0, 0.0, 0.0, 40, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.15, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "On Basic Attack hits, deal Physical Damage equal to 4% of the target's maximum Health. This only affects gods.");
-        Item voidShield = new Item("Void Shield", R.drawable.void_shield, 2700, 'P', 'I',
+                getString(R.string.qins_sais_passive));
+        Item voidShield = new Item(getString(R.string.void_shield_name), R.drawable.void_shield, 2700, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 40, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Enemy gods within 55 units have their Physical Protection reduced by 20.");
-        Item windDemon = new Item("Wind Demon", R.drawable.wind_demon, 2800, 'P', 'I',
+                getString(R.string.void_shield_passive));
+        Item windDemon = new Item(getString(R.string.wind_demon_name), R.drawable.wind_demon, 2800, 'P', 'I',
                 0, 0, 0.0, 0.0, 30, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.1, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 20, 0, 0,                        //Crit Chance, CDR, CCR
-                "Your Critical Hits increase your Attack Speed and Movement Speed by 20% for 5s.");
-        Item bloodforge = new Item("Bloodforge", R.drawable.bloodforge, 2850, 'P', 'I',
+                getString(R.string.wind_demon_passive));
+        Item bloodforge = new Item(getString(R.string.bloodforge_name), R.drawable.bloodforge, 2850, 'P', 'I',
                 0, 0, 0.0, 0.0, 75, 15, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 0, 0,                        //Crit Chance, CDR, CCR
-                "Killing an enemy god forges a shield from their blood with Health equal to 200 + 10 per Player Level for 20s. While the Blood Shield is active you gain +10% movement speed.");
-        Item malice = new Item("Malice", R.drawable.malice, 3000, 'P', 'I',
+                getString(R.string.bloodforge_passive));
+        Item malice = new Item(getString(R.string.malice_name), R.drawable.malice, 3000, 'P', 'I',
                 0, 0, 0.0, 0.0, 50, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 20, 0, 0,                        //Crit Chance, CDR, CCR
-                "When you deal a Critical Strike, you deal an additional +75% of your total Physical Power as Physical Damage over the next 3s. Additional crits refresh this effect.");
-        Item deathbringer = new Item("Deathbringer", R.drawable.deathbringer, 3200, 'P', 'I',
+                getString(R.string.malice_passive));
+        Item deathbringer = new Item(getString(R.string.deathbringer_name), R.drawable.deathbringer, 3200, 'P', 'I',
                 0, 0, 0.0, 0.0, 50, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 20, 0, 0,                        //Crit Chance, CDR, CCR
-                "Critical Strike damage is increased by 40%.");
-        Item gladiatorsShield = new Item("Gladiator's Shield", R.drawable.gladiators_shield, 1700, 'P', 'I',
+                getString(R.string.deathbringer_passive));
+        Item gladiatorsShield = new Item(getString(R.string.gladiators_shield_name), R.drawable.gladiators_shield, 1700, 'P', 'I',
                 0, 0, 0.0, 0.0, 15, 0, 0,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 45, 0, 0.0, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
                 0, 10, 0,                        //Crit Chance, CDR, CCR
-                "Anytime you hit an Enemy god with an ability you are healed for 2.5% of your maximum Health and Mana. This can only trigger once per ability.");
+                getString(R.string.gladiators_shield_passive));
         Item ichaival = new Item("Ichaival", R.drawable.ichaival, 1700, 'P', 'I',
                 0, 0, 0.0, 0.0, 0, 0, 10,        //Health, Mana, HP5, MP5, Damage, Lifesteal, Penetration
                 0, 0, 0.3, 0,                   //Physical Prots, Magical Prots, Attack Speed, Speed
@@ -1421,6 +1431,11 @@ public class GodDrawer extends AppCompatActivity {
         starterMag.add(vampiricShroud);
         starterMag = sortItemsByName(starterMag);
 
+        starters.addAll(starterPhys);
+        starters.addAll(starterMag);
+        starters.addAll(starterCommon);
+        starters = sortItemsByName(starters);
+
         itemsCommon.add(relicDagger);
         itemsCommon.add(wingedBlade);
         itemsCommon.add(oniHuntersGarb);
@@ -1557,6 +1572,96 @@ public class GodDrawer extends AppCompatActivity {
         itemsAll = sortItemsByName(itemsAll);
 
     }
+    
+    public void createTrees() {
+        //Common
+        ItemTree ancientBladeTree = new ItemTree(R.drawable.ancient_blade, "Ancient Blade Tree", ancientBlade);
+        ItemTree breastplateTree = new ItemTree(R.drawable.breastplate, "Breastplate Tree", breastplate);
+        ItemTree cloakTree = new ItemTree(R.drawable.cloak, "Cloak Tree", cloak);
+        ItemTree enchantedKusariTree = new ItemTree(R.drawable.enchanted_kusari, "Enchanted Kusari Tree", enchantedKusari);
+        ItemTree glowingEmeraldTree = new ItemTree(R.drawable.glowing_emerald, "Glowing Emerald Tree", glowingEmerald);
+        ItemTree ironMailTree = new ItemTree(R.drawable.iron_mail, "Iron Mail Tree", ironMail);
+        ItemTree talismanTree = new ItemTree(R.drawable.talisman, "Talisman Tree", talisman);
+
+        treesCommon.add(ancientBladeTree);
+        treesCommon.add(breastplateTree);
+        treesCommon.add(cloakTree);
+        treesCommon.add(enchantedKusariTree);
+        treesCommon.add(glowingEmeraldTree);
+        treesCommon.add(ironMailTree);
+        treesCommon.add(talismanTree);
+        treesCommon = sortTreesByName(treesCommon);
+
+        ItemTree shoesTree = new ItemTree(R.drawable.shoes, "Shoes Tree", shoes);
+        ItemTree druidStoneTree = new ItemTree(R.drawable.druid_stone, "Druid Stone Tree", druidStone);
+        ItemTree emeraldRingTree = new ItemTree(R.drawable.emerald_ring, "Emerald Ring Tree", emeraldRing);
+        ItemTree imperialHelmetTree = new ItemTree(R.drawable.imperial_helmet, "Imperial Helmet Tree", imperialHelmet);
+        ItemTree lostArtifactTree = new ItemTree(R.drawable.lost_artifact, "Lost Artifact Tree", lostArtifact);
+        ItemTree magicFocusTree = new ItemTree(R.drawable.magic_focus, "Magic Focus Tree", magicFocus);
+        ItemTree soulReliquaryTree = new ItemTree(R.drawable.soul_reliquary, "Soul Reliquary Tree", soulReliquary);
+        ItemTree tinyTrinketTree = new ItemTree(R.drawable.tiny_trinket, "Tiny Trinket Tree", tinyTrinket);
+        ItemTree uncommonSashTree = new ItemTree(R.drawable.uncommon_sash, "Uncommon Sash Tree", uncommonSash);
+
+        treesMag.add(shoesTree);
+        treesMag.add(druidStoneTree);
+        treesMag.add(emeraldRingTree);
+        treesMag.add(imperialHelmetTree);
+        treesMag.add(lostArtifactTree);
+        treesMag.add(magicFocusTree);
+        treesMag.add(soulReliquaryTree);
+        treesMag.add(tinyTrinketTree);
+        treesMag.add(uncommonSashTree);
+        treesMag = sortTreesByName(treesMag);
+
+        ItemTree cudgelTree = new ItemTree(R.drawable.cudgel, "Cudgel Tree", cudgel);
+        
+        ItemTree enchantedBucklerTree = new ItemTree(R.drawable.enchanted_buckler, "Enchanted Buckler Tree", enchantedBuckler);
+        ItemTree hiddenDaggerTree = new ItemTree(R.drawable.hidden_dagger, "Hidden Dagger Tree", hiddenDagger);
+        ItemTree katanaTree = new ItemTree(R.drawable.katana, "Katana Tree", katana);
+        ItemTree lightBladeTree = new ItemTree(R.drawable.light_blade, "Light Blade Tree", lightBlade);
+        ItemTree maceTree = new ItemTree(R.drawable.mace, "Mace Tree", mace);
+        ItemTree morningstarTree = new ItemTree(R.drawable.morningstar, "Morningstar Tree", morningstar);
+        ItemTree roundShieldTree = new ItemTree(R.drawable.round_shield, "Round Shield Tree", roundShield);
+        ItemTree shortBowTree = new ItemTree(R.drawable.short_bow, "Short Bow Tree", shortBow);
+        ItemTree shurikenTree = new ItemTree(R.drawable.shuriken, "Shuriken Tree", shuriken);
+        ItemTree spikedGauntletTree = new ItemTree(R.drawable.spiked_gauntlet, "Spiked Gauntlet Tree", spikedGauntlet);
+
+        treesRat.add(cudgelTree);
+        treesRat.add(enchantedBucklerTree);
+        treesRat.add(hiddenDaggerTree);
+        treesRat.add(katanaTree);
+        treesRat.add(lightBladeTree);
+        treesRat.add(maceTree);
+        treesRat.add(morningstarTree);
+        treesRat.add(roundShieldTree);
+        treesRat.add(shortBowTree);
+        treesRat.add(shurikenTree);
+        treesRat.add(spikedGauntletTree);
+        treesRat = sortTreesByName(treesRat);
+
+        ItemTree bootsTree = new ItemTree(R.drawable.boots, "Boots Tree", boots);
+        
+        treesPhys.addAll(treesRat);
+        treesPhys.add(bootsTree);
+        treesPhys = sortTreesByName(treesPhys);
+        
+        treesPhysCommon.addAll(treesPhys);
+        treesPhysCommon.addAll(treesCommon);
+        treesPhysCommon = sortTreesByName(treesPhysCommon);
+
+        treesRatCommon.addAll(treesRat);
+        treesRatCommon.addAll(treesCommon);
+        treesRatCommon = sortTreesByName(treesRatCommon);
+
+        treesMagCommon.addAll(treesMag);
+        treesMagCommon.addAll(treesCommon);
+        treesMagCommon = sortTreesByName(treesMagCommon);
+
+        trees.addAll(treesCommon);
+        trees.addAll(treesMag);
+        trees.addAll(treesPhys);
+        trees = sortTreesByName(trees);
+    }
 
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -1606,6 +1711,15 @@ public class GodDrawer extends AppCompatActivity {
         return list;
     }
 
+    public ArrayList<ItemTree> sortTreesByName(ArrayList<ItemTree> list) {
+        Collections.sort(list, new Comparator<ItemTree>() {
+            public int compare(final ItemTree object1, final ItemTree object2) {
+                return object1.getName().compareTo(object2.getName());
+            }
+        });
+        return list;
+    }
+
     public void populateNameLists() {
         classNames.add(getString(R.string.mage));
         classNames.add(getString(R.string.warrior));
@@ -1627,11 +1741,9 @@ public class GodDrawer extends AppCompatActivity {
     public void getFavs() {
         Boolean isFav;
         SharedPreferences pref = getPreferences(Context.MODE_PRIVATE);
-        for(int i = 0; i < gods.size(); i++)
-        {
+        for (int i = 0; i < gods.size(); i++) {
             isFav = pref.getBoolean(gods.get(i).getNameString() + "_fav", false);
-            gods.get(i).setFav(isFav);
-            if(isFav)
+            if (isFav)
                 favGods.add(gods.get(i));
         }
     }
@@ -1665,6 +1777,11 @@ public class GodDrawer extends AppCompatActivity {
 
                 if(selection == R.id.nav_fav) {
                     Fragment myFragment = new FavFragment();
+                    replaceFragment(myFragment);
+                }
+
+                if(selection == R.id.nav_items) {
+                    Fragment myFragment = new ItemsPageFragment();
                     replaceFragment(myFragment);
                 }
 

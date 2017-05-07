@@ -14,6 +14,7 @@
 
     <color name="godName">#FFF</color>
     <color name="godTitle">#DDD</color>
+    <color name="mid_gray">#555</color>
 
     <color name="calmblue">#1762A1</color>
 </resources>

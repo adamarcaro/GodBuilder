@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,11 +47,14 @@ public class FavFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view == null)
             view = inflater.inflate(R.layout.home, null);
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Favorites");
         instantiateViews();
         populateLists();
 
-        sv.setQueryHint("Search Gods...");
+        RelativeLayout appNameContainer = (RelativeLayout) view.findViewById(R.id.app_name_container);
+        appNameContainer.setVisibility(View.GONE);
+
+        sv.setQueryHint(getString(R.string.search_gods));
 
         filtersSection.setAdapter(new FiltersViewAdapter());
         favGods = sortItemsByName(favGods);
@@ -323,4 +327,5 @@ public class FavFragment extends Fragment {
 
         return list;
     }
+
 }

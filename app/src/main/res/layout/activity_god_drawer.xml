@@ -32,6 +32,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/containerView">
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"/>
     </FrameLayout>
 </LinearLayout>
 
@@ -56,6 +59,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_god_drawer"
         app:menu="@menu/activity_god_drawer_drawer"
-        android:background="#DDD"/>
+        android:background="@color/klazzik_grey"
+        app:itemTextColor="@color/godTitle" />
 
 </android.support.v4.widget.DrawerLayout>

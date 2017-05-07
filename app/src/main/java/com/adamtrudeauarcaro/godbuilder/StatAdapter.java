@@ -24,11 +24,41 @@ public class StatAdapter extends BaseAdapter {
 
     Context c;
     ArrayList<Stat> stats;
-    TextView statLabel, statValue;
 
     public StatAdapter(Context c, ArrayList<Stat> stats) {
         this.c = c;
         this.stats = stats;
+    }
+
+    static class ViewHolder {
+        private TextView statLabel;
+        private TextView statValue;
+    }
+
+    public View getView(int position, View view, ViewGroup parent) {
+
+        ViewHolder holder;
+
+        if(view == null) {
+            LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.stat_entry, null);
+            holder = new ViewHolder();
+            holder.statLabel = (TextView) view.findViewById(R.id.statLabel);
+            holder.statValue = (TextView) view.findViewById(R.id.statValue);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+
+        holder.statLabel.setText(stats.get(position).getStatLabel());
+        holder.statValue.setText(stats.get(position).getStatValue());
+
+        if(stats.get(position).getCapped())
+            holder.statValue.setTextColor(ContextCompat.getColor(c, R.color.smooth_red));
+        else if(!stats.get(position).getCapped())
+            holder.statValue.setTextColor(ContextCompat.getColor(c, R.color.holoBlue));
+
+        return view;
     }
 
     public int getCount() {
@@ -43,25 +73,13 @@ public class StatAdapter extends BaseAdapter {
         return stats.indexOf(getItem(position));
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        if(convertView == null)
-            convertView = inflater.inflate(R.layout.stat_entry, null);
-
-        statLabel = (TextView) convertView.findViewById(R.id.statLabel);
-        statValue = (TextView) convertView.findViewById(R.id.statValue);
-
-        statLabel.setText(stats.get(position).getStatLabel());
-        statValue.setText(stats.get(position).getStatValue());
-
-        if(stats.get(position).getCapped())
-            statValue.setTextColor(ContextCompat.getColor(c, R.color.smooth_red));
-        else if(!stats.get(position).getCapped())
-            statValue.setTextColor(ContextCompat.getColor(c, R.color.holoBlue));
-        return convertView;
+    public int getViewTypeCount() {
+        return getCount();
     }
 
+    public int getItemViewType(int position) {
+        return position;
+    }
+    
 }
 

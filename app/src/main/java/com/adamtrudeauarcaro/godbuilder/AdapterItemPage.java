@@ -2,8 +2,6 @@ package com.adamtrudeauarcaro.godbuilder;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,7 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 
 //Adapter for populating list view
 
-public class Adapter extends BaseAdapter implements Filterable {
+public class AdapterItemPage extends BaseAdapter implements Filterable {
 
     Context c;
     ArrayList<Item> items;
@@ -32,7 +31,7 @@ public class Adapter extends BaseAdapter implements Filterable {
     CustomFilter filter;
     AlertDialog dialog;
 
-    public Adapter(Context c, ArrayList<Item> items) {
+    public AdapterItemPage(Context c, ArrayList<Item> items) {
         this.c = c;
         this.items = items;
         this.filterList = items;
@@ -41,18 +40,18 @@ public class Adapter extends BaseAdapter implements Filterable {
     static class ViewHolder {
         private TextView treeName;
         private ImageView treeImage;
-        private RelativeLayout info;
+        private LinearLayout container;
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
         ViewHolder holder;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_selection_rs, parent, false);
+            view = inflater.inflate(R.layout.item_selection_rs_item_page, parent, false);
             holder = new ViewHolder();
             holder.treeName = (TextView) view.findViewById(R.id.tree_name);
             holder.treeImage = (ImageView) view.findViewById(R.id.tree_image);
-            holder.info = (RelativeLayout) view.findViewById(R.id.item_info);
+            holder.container = (LinearLayout) view.findViewById(R.id.container);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -60,7 +59,7 @@ public class Adapter extends BaseAdapter implements Filterable {
 
         holder.treeName.setText(items.get(position).getName());
         holder.treeImage.setImageResource(items.get(position).getImage());
-        holder.info.setOnClickListener(new View.OnClickListener() {
+        holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -158,20 +157,20 @@ public class Adapter extends BaseAdapter implements Filterable {
         return items.size();
     }
 
-    public int getViewTypeCount() {
-        return getCount();
-    }
-
-    public int getItemViewType(int position) {
-        return position;
-    }
-
     public Item getItem(int position) {
         return items.get(position);
     }
 
     public long getItemId(int position) {
         return items.indexOf(getItem(position));
+    }
+
+    public int getViewTypeCount() {
+        return getCount();
+    }
+
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public Filter getFilter() {

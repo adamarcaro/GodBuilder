@@ -3,14 +3,9 @@ package com.adamtrudeauarcaro.godbuilder;
 /**
  * Created by adama on 2017-04-10.
  */
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.media.Image;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,25 +17,19 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ItemAdapter extends BaseExpandableListAdapter {
+import java.util.ArrayList;
+
+public class ItemAdapterItemPage extends BaseExpandableListAdapter {
 
     private Context context;
     private ArrayList<ItemTree> treeList;
     private ArrayList<ItemTree> originalList;
     private AlertDialog dialog;
 
-    public ItemAdapter(Context context, ArrayList<ItemTree> treeList) {
-        this.context = context;
-        this.treeList = new ArrayList<ItemTree>();
-        this.treeList.addAll(treeList);
-        this.originalList = new ArrayList<ItemTree>();
-        this.originalList.addAll(treeList);
-    }
-
     static class ViewHolder {
         private ImageView itemImage;
         private TextView itemName;
-        private RelativeLayout info;
+        private RelativeLayout container;
     }
 
     static class ViewHolderTree {
@@ -52,25 +41,25 @@ public class ItemAdapter extends BaseExpandableListAdapter {
         ViewHolder holder;
         if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.item_selection, null);
+            view = layoutInflater.inflate(R.layout.item_selection_item_page, null);
             holder = new ViewHolder();
             holder.itemImage = (ImageView) view.findViewById(R.id.item_image);
             holder.itemName = (TextView) view.findViewById(R.id.item_name);
-            holder.info = (RelativeLayout) view.findViewById(R.id.item_info);
+            holder.container = (RelativeLayout) view.findViewById(R.id.container);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        final Item item = (Item) getChild(groupPosition, childPosition);
+        final Item item = getChild(groupPosition, childPosition);
         holder.itemImage.setImageResource(item.getImage());
         holder.itemName.setText(item.getName());
-        holder.info.setOnClickListener(new View.OnClickListener() {
+        holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View mView = inflater.inflate(R.layout.item_stats, null);
+                View mView = inflater.inflate(R.layout.item_stats_item_page, null);
 
                 final AlertDialog.Builder mBuilder = new AlertDialog.Builder(v.getRootView().getContext());
                 mBuilder.setView(mView);
@@ -79,6 +68,14 @@ public class ItemAdapter extends BaseExpandableListAdapter {
                 TextView itemName = (TextView) mView.findViewById(R.id.item_header_name);
                 itemImage.setImageResource(item.getImage());
                 itemName.setText(item.getName());
+
+                TextView itemType = (TextView) mView.findViewById(R.id.item_type);
+                if(item.getItemType() == 'M')
+                    itemType.setText(R.string.magical);
+                else if(item.getItemType() == 'P')
+                    itemType.setText(R.string.physical);
+                else
+                    itemType.setText(R.string.physical_and_magical);
 
                 int itemCost, itemHealth, itemMana, itemDamage, itemProtPhys, itemProtMag, itemCritChance, itemPenetration, itemLifesteal, itemCdr, itemCcr;
                 double itemHp5, itemMp5, itemAttackSpeed, itemSpeed;
@@ -181,6 +178,14 @@ public class ItemAdapter extends BaseExpandableListAdapter {
         return view;
     }
 
+    public ItemAdapterItemPage(Context context, ArrayList<ItemTree> treeList) {
+        this.context = context;
+        this.treeList = new ArrayList<ItemTree>();
+        this.treeList.addAll(treeList);
+        this.originalList = new ArrayList<ItemTree>();
+        this.originalList.addAll(treeList);
+    }
+
     public Item getChild(int groupPosition, int childPosition) {
         ArrayList<Item> itemList = treeList.get(groupPosition).getItemList();
         return itemList.get(childPosition);
@@ -248,5 +253,6 @@ public class ItemAdapter extends BaseExpandableListAdapter {
         notifyDataSetChanged();
 
     }
+
 
 }

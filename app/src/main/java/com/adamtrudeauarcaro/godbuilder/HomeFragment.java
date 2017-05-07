@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.classNames;
+import static com.adamtrudeauarcaro.godbuilder.GodDrawer.favGods;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.gods;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.hideSoftKeyboard;
 import static com.adamtrudeauarcaro.godbuilder.GodDrawer.pantheonNames;
@@ -44,7 +46,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(view == null)
             view = inflater.inflate(R.layout.home, null);
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Gods");
         instantiateViews();
         populateLists();
 
@@ -307,4 +309,5 @@ public class HomeFragment extends Fragment {
         pantheons.add(hindu);
         pantheons.add(greek);
     }
+
 }

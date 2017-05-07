@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,28 +23,38 @@ import java.util.StringTokenizer;
 //Adapter for populating list view
 
 public class PassiveAdapter extends ArrayAdapter<Item> {
+    
     public PassiveAdapter(Context context, ArrayList<Item> items) {
         super(context, 0, items);
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    static class ViewHolder {
+        private TextView itemName;
+        private TextView passive;
+    }
+    
+    public View getView(int position, View view, ViewGroup parent) {
+        ViewHolder holder;
         // Get the data item for this position
         Item item = getItem(position);
         String passive = item.getPassive();
         String itemName = item.getName();
         // Check if an existing view is being reused, otherwise inflate the view
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.stat_passive_entry, parent, false);
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.stat_passive_entry, parent, false);
+            holder = new ViewHolder();
+            holder.itemName = (TextView) view.findViewById(R.id.item_name);
+            holder.passive = (TextView) view.findViewById(R.id.passive);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
         }
-        // Lookup view for data population
-        TextView name = (TextView) convertView.findViewById(R.id.item_name);
-        TextView passiveText = (TextView) convertView.findViewById(R.id.passive);
+
         // Populate the data into the template view using the data object
-        name.setText(itemName);
-        passiveText.setText(passive);
+        holder.itemName.setText(itemName);
+        holder.passive.setText(passive);
 
         // Return the completed view to render on screen
-        return convertView;
+        return view;
     }
 }

@@ -1,6 +1,11 @@
 package com.adamtrudeauarcaro.godbuilder;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.media.Image;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +33,53 @@ public class GodAdapter extends BaseAdapter implements Filterable {
     private CustomFilter filter;
     private ArrayList<String> classFilters = new ArrayList<String>();
     private ArrayList<String> pantheonFilters = new ArrayList<String>();
+    private God god;
+    SharedPreferences pref;
 
     public GodAdapter(Context context, ArrayList<God> gods) {
         this.context = context;
         this.gods = gods;
         this.filterList = gods;
+    }
+
+    static class ViewHolder {
+        private TextView godName;
+        private ImageView godImage;
+        private ImageView godPantheon;
+        private ImageView godType;
+    }
+
+    public View getView(int position, View view, ViewGroup parent) {
+        ViewHolder holder;
+        if (view == null)
+        {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.god_selection, null);
+            holder = new ViewHolder();
+            holder.godName = (TextView) view.findViewById(R.id.god_name);
+            holder.godImage = (ImageView) view.findViewById(R.id.god_image);
+            holder.godPantheon = (ImageView) view.findViewById(R.id.pantheon);
+            holder.godType = (ImageView) view.findViewById(R.id.type);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+
+        god = gods.get(position);
+
+        holder.godName.setText(god.getName());
+        holder.godImage.setImageResource(god.getImage());
+        holder.godPantheon.setImageResource(god.getPantheonIcon());
+        holder.godType.setImageResource(god.getClassIcon());
+
+        pref = ((Activity) context).getPreferences(context.MODE_PRIVATE);
+
+        if(pref.getBoolean(god.getNameString()+"_fav", false))
+            holder.godName.setTextColor(ContextCompat.getColor(context, R.color.holoBlue));
+        else
+            holder.godName.setTextColor(ContextCompat.getColor(context, R.color.godTitle));
+
+        return view;
     }
 
     public int getCount() {
@@ -47,29 +94,8 @@ public class GodAdapter extends BaseAdapter implements Filterable {
         return gods.indexOf(getItem(position));
     }
 
-    public View getView(int position, View view, ViewGroup parent) {
-        if (view == null)
-        {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.god_selection, null);
-        }
-
-        final God god = gods.get(position);
-        TextView name = (TextView) view.findViewById(R.id.god_name);
-        ImageView image = (ImageView) view.findViewById(R.id.god_image);
-        ImageView pantheon = (ImageView) view.findViewById(R.id.pantheon);
-        ImageView type = (ImageView) view.findViewById(R.id.type);
-
-        name.setText(god.getName());
-        image.setImageResource(god.getImage());
-        pantheon.setImageResource(god.getPantheonIcon());
-        type.setImageResource(god.getClassIcon());
-
-        return view;
-    }
-
     public int getViewTypeCount() {
-        return filterList.size();
+        return getCount();
     }
 
     public int getItemViewType(int position) {
